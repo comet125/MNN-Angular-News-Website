@@ -1,0 +1,20 @@
+<nav class="navbar">
+  <div class="navbar-hamburger" (click)="toggleMenu()" [class.active]="menuOpen">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="navbar-menu" [class.open]="menuOpen">
+    <a href="/home" class="navbar-link">Home</a>
+    <a href="/about" class="navbar-link">About</a>
+    <a href="/contact" class="navbar-link">Contact</a>
+  </div>
+  <div class="navbar-profile">
+    <a [routerLink]="['/profile']">
+      <img class="profile-icon"
+           src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
+           alt="ProfilePic">
+    </a>
+  </div>
+
+</nav>

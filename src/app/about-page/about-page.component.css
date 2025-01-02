@@ -1,0 +1,28 @@
+/* General Box Styling */
+.box {
+  background-color: #ffffff;
+  border-radius: 15px;  /* Rounded corners */
+  border: 1px solid #ddd;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for the boxes */
+.box:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Blue Gradient Background for Box 2 */
+.blue-gradient {
+  background: linear-gradient(135deg, #007bff, #00d2ff);
+  color: white;  /* Text color should contrast with the gradient */
+}
+
+/* Optional: Padding and spacing adjustments */
+.box h4 {
+  margin-bottom: 15px;
+}
+
+.box p {
+  font-size: 14px;
+  color: #555;
+}

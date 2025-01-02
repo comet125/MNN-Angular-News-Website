@@ -1,0 +1,44 @@
+<!-- profile-settings.component.html -->
+<div class="container mt-5">
+  <h2 class="text-center mb-4">User</h2>
+
+  <div class="text-center mb-4">
+    <img class="profile-icon" src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
+         alt="Profile Icon" style="width: 115px; height: 115px;">
+  </div>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">New First Name</label>
+      <input type="text" id="firstName" class="form-control" [(ngModel)]="firstName" name="firstName" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="surname" class="form-label">New Surname</label>
+      <input type="text" id="surname" class="form-control" [(ngModel)]="surname" name="surname" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="oldPassword" class="form-label">Old Password</label>
+      <input type="password" id="oldPassword" class="form-control" [(ngModel)]="oldPassword" name="oldPassword" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="newPassword" class="form-label">New Password</label>
+      <input type="password" id="newPassword" class="form-control" [(ngModel)]="newPassword" name="newPassword" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="confirmPassword" class="form-label">Confirm New Password</label>
+      <input type="password" id="confirmPassword" class="form-control" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+    </div>
+
+    <div class="d-grid gap-2 mt-4">
+      <button type="submit" class="btn btn-primary" [disabled]="!formValid()">Save Changes</button>
+    </div>
+
+    <div class="d-grid gap-2 mt-3">
+      <a routerLink="/login" class="btn btn-danger">Log Out</a>
+    </div>
+  </form>
+</div>

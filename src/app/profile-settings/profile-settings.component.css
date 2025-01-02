@@ -1,0 +1,28 @@
+/* profile-settings.component.css */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+h2 {
+  color: #333;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.profile-icon {
+  border-radius: 50%;
+  border: 3px solid #333;
+}

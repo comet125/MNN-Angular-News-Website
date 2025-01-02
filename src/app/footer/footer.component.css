@@ -1,0 +1,14 @@
+.footer {
+  background-color: #f8f8f8;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 15px;
+  right: 15px;
+  font-size: 11px;
+  border-top-left-radius: 23px;
+  border-top-right-radius: 23px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

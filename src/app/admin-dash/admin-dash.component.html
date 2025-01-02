@@ -1,0 +1,46 @@
+<div class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Admin Panel</h1>
+
+    <a routerLink="/login" class="text-danger">
+      <i class="bi bi-box-arrow-right fs-3"></i>
+    </a>
+  </div>
+
+
+  <div class="action-panel">
+    <!-- user edit -->
+    <button class="btn btn-secondary w-100"
+          type="button"
+           data-bs-toggle="collapse"
+           data-bs-target="#userEditingCollapse"
+           aria-expanded="false"
+           aria-controls="userEditingCollapse"
+           (click)="toggleUserEditing()">User Editing</button>
+
+   <div *ngIf="userEditingVisible" class="editing-container mt-3" [ngClass]="{'show': userEditingVisible}">
+      <div class="card p-3">
+        <h5 class="card-title">User Editing</h5>
+        <p>placeholder</p>
+      </div>
+   </div>
+
+    <!-- news edit -->
+    <button class="btn btn-secondary w-100 mt-3"
+           type="button"
+           data-bs-toggle="collapse"
+           data-bs-target="#newsEditingCollapse"
+           aria-expanded="false"
+            aria-controls="newsEditingCollapse"
+           (click)="toggleNewsEditing()">News Editing</button>
+
+   <div *ngIf="newsEditingVisible" class="editing-container mt-3" [ngClass]="{'show': newsEditingVisible}">
+     <div class="card p-3">
+       <h5 class="card-title">News Editing</h5>
+       <p>placeholder</p>
+      </div>
+   </div>
+  </div>
+</div>
+<app-footer></app-footer>

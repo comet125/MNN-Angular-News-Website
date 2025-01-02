@@ -1,0 +1,29 @@
+<div class="fieldType">
+  <div class="login-container">
+    <form class="login-form" (ngSubmit)="onSubmit()">
+      <h2>Register</h2>
+
+      <label for="name">Username:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your username" required [(ngModel)]="userData.name">
+
+      <label for="first-name">First name:</label>
+      <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required [(ngModel)]="userData.firstName">
+
+      <label for="surname">Surname:</label>
+      <input type="text" id="surname" name="surname" placeholder="Enter your surname" required [(ngModel)]="userData.surname">
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required [(ngModel)]="userData.email">
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Create a password" required [(ngModel)]="userData.password">
+
+      <label for="confirm-password">Confirm Password:</label>
+      <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required [(ngModel)]="userData.confirmPassword">
+
+      <button type="submit">Register</button>
+
+      <p>Already have an account? <a routerLink="/login">Login here</a></p>
+    </form>
+  </div>
+</div>

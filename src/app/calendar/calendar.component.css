@@ -1,0 +1,39 @@
+/* Calendar Grid Styling */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.day-header {
+  font-weight: bold;
+  text-align: center;
+  background-color: #f8f8f8;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.day-cell {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.day-cell:hover {
+  background-color: #f1f1f1;
+}
+
+.day-cell.has-news {
+  background-color: #007bff;
+  color: white;
+}
+
+.day-cell.has-news:hover {
+  background-color: #0056b3;
+}

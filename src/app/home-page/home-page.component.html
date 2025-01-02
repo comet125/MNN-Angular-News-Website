@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <div class="jumbotron text-center p-5 bg-gradient-blue">
+    <h1 class="display-4 text-white">Welcome to MNN</h1>
+    <p class="lead text-white">
+      Browse the latest and greatest news in the region with Mateo News Network. We are an independent user-based news provider. Follow the link to learn more about us and our team.
+    </p>
+    <button class="btn btn-light btn-lg mt-3" routerLink="/about">Learn More</button>
+  </div>
+
+  <div class="container mt-4">
+    <button class="btn btn-secondary w-100"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#calendarCollapse"
+            aria-expanded="false"
+            aria-controls="calendarCollapse"
+            (click)="toggleCalendar()">Filter by date</button>
+
+    <div *ngIf="calendarVisible" class="calendar-container mt-3" [ngClass]="{'show': calendarVisible}">
+      <div class="card p-3">
+        <h5 class="card-title">Calendar</h5>
+        <app-calendar></app-calendar>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row mt-5">
+    <h1 class="positioned-title">News</h1>
+    <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let news of newsItems">
+      <app-news-card></app-news-card>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>

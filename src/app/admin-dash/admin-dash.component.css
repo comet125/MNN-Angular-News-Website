@@ -1,0 +1,32 @@
+/* Editing container styling */
+.editing-container {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  display: block;
+}
+
+.editing-container.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+/* Optional: Card styling for better presentation */
+.card {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.btn {
+  margin-bottom: 10px; /* To ensure some space between buttons */
+}
+
+.action-panel {
+  margin-top: 30px;
+}

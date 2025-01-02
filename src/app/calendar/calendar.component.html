@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <!-- Calendar Header -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="d-flex">
+      <button class="btn btn-secondary me-2" (click)="prevMonth()">&#8249;</button>
+      <h4 class="mb-0">{{ months[selectedMonth] }} {{ selectedYear }}</h4>
+      <button class="btn btn-secondary ms-2" (click)="nextMonth()">&#8250;</button>
+    </div>
+    <div class="d-flex">
+      <select class="form-select me-2" [(ngModel)]="selectedMonth" (change)="updateCalendar()">
+        <option *ngFor="let month of months; let i = index" [value]="i">{{ month }}</option>
+      </select>
+      <select class="form-select" [(ngModel)]="selectedYear" (change)="updateCalendar()">
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Calendar Grid -->
+  <div class="calendar-grid">
+    <div class="day-header" *ngFor="let day of days">{{ day }}</div>
+    <div
+      class="day-cell"
+      *ngFor="let date of dates"
+      [class.has-news]="newsDates.includes(date.fullDate)"
+      (click)="selectDate(date.fullDate)"
+    >
+      {{ date.day }}
+    </div>
+  </div>
+</div>

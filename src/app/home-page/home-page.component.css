@@ -1,0 +1,30 @@
+.bg-gradient-blue {
+  background: linear-gradient(45deg, #007bff, #00d4ff);
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.container.mt-5 {
+  background-color: #f8f8f8;  /* Adjust this to your desired background color */
+  border-radius: 10px;  /* Adjust this to control how rounded the corners are */
+  padding: 20px;
+}
+
+
+.positioned-title {
+  margin-left: 15px;
+  padding-bottom: 20px;
+}
+
+.calendar-container {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  display: block;
+}
+
+.calendar-container.show {
+  opacity: 1;
+  transform: scale(1);
+}

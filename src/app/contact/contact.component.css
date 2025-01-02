@@ -1,0 +1,53 @@
+/* Container to make sections split equally */
+.contact-left, .contact-right {
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  padding: 20px;
+}
+
+/* Left side content (text) styling */
+.contact-left {
+  background-color: #f8f8f8; /* Light background color */
+  color: #333;
+}
+
+.contact-left h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.contact-left p {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.contact-left ul {
+  font-size: 1rem;
+}
+
+.contact-left li {
+  margin-bottom: 10px;
+}
+
+/* Right side content (image) styling */
+.contact-right {
+  background-color: #eeeeee;
+  background-size: cover;
+  background-position: center;
+}
+
+.contact-right img {
+  object-fit: cover; /* Make sure the image covers the area without distortion */
+}
+
+.contact-wrapping {
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+.no-link-style {
+  text-decoration: none;
+  color: inherit;
+}
