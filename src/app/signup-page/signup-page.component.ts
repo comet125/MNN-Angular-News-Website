@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import * as bcrypt from 'bcryptjs';
+import { HttpClient } from '@angular/common/http';
+//import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-signup-page',
@@ -22,7 +23,7 @@ export class SignupPageComponent {
     confirmPassword: ''
   };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private http: HttpClient) { }
 
   emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
@@ -37,19 +38,31 @@ export class SignupPageComponent {
       return;
     }
 
-    const hashedPassword = await bcrypt.hash(this.userData.password, 10);
+    //const hashedPassword = await bcrypt.hash(this.userData.password, 10);
+
     const formData = {
       username: this.userData.name,
-      firstName: this.userData.firstName,
+      first_name: this.userData.firstName,
       surname: this.userData.surname,
       email: this.userData.email,
-      password: hashedPassword
+      password: this.userData.password
     };
 
-    console.log(formData); // Log the data with the hashed password
+    console.log(formData);
 
-    // Redirect after success
-    alert("Account created successfully! Redirecting to the login page");
-    this.router.navigate(['/login']);
+    const url = 'http://localhost/database/register.php';
+
+    this.http.post(url, formData).subscribe({
+      next: (response: any) => {
+        console.log('Uspjeh:', response);
+        alert("Account created successfully! Redirecting to the login page");
+        this.router.navigate(['/login']);
+      },
+      error: (error) => {
+        console.log(formData);
+        console.error('Greška:', error);
+      }
+    });
+
   }
 }

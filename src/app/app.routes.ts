@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import {provideRouter, Routes} from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -6,6 +6,7 @@ import { ProfileSettingsComponent } from './profile-settings/profile-settings.co
 import { AboutPageComponent } from './about-page/about-page.component';
 import { ContactComponent } from './contact/contact.component';
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
+import {provideHttpClient} from '@angular/common/http';
 
 export const routes: Routes = [
   { path: '', component: LoginPageComponent }, // Default route
@@ -18,3 +19,9 @@ export const routes: Routes = [
   { path: 'admin-dash', component: AdminDashComponent },
 ];
 
+export const appConfig = {
+  providers: [
+    provideRouter(routes),
+    provideHttpClient()
+  ]
+};
