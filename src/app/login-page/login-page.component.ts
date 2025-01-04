@@ -28,6 +28,7 @@ export class LoginPageComponent {
       next: (response: any) => {
         if (response.status === 'success') {
           console.log('Login uspješan:', response);
+          console.log(response);
 
           if (formData.email === 'admin' && formData.password === 'admin') {
             localStorage.setItem('role', 'admin'); // Postavi ulogu
@@ -36,6 +37,9 @@ export class LoginPageComponent {
 
           } else {
             localStorage.setItem('role', 'user'); // Postavi ulogu
+            localStorage.setItem('username', response.username);
+            localStorage.setItem('first_name', response.firstName);
+            localStorage.setItem('surname', response.surname);
             console.log('Ulogovan kao: user');
             this.router.navigate(['/home']);
           }

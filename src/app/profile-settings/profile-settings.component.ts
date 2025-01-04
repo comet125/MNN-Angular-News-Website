@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Router, RouterLink} from '@angular/router';
+import { OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-profile-settings',
@@ -12,21 +14,37 @@ import {Router, RouterLink} from '@angular/router';
   styleUrl: './profile-settings.component.css'
 })
 
-export class ProfileSettingsComponent {
+
+export class ProfileSettingsComponent implements OnInit {
   firstName: string = '';
   surname: string = '';
   oldPassword: string = '';
   newPassword: string = '';
   confirmPassword: string = '';
 
-  constructor(private router: Router) {}
+
+  constructor(private router: Router) { }
+
+
+
 
   // Function to check if the new passwords match
   formValid(): boolean {
     return this.newPassword === this.confirmPassword;
   }
 
+
   // Function to handle form submission
+  firstname: string | null | undefined;
+  lastname: string | null | undefined;
+  username: string | null | undefined;
+
+  ngOnInit() {
+    this.firstname = localStorage.getItem('first_name');
+    this.lastname = localStorage.getItem('surname');
+    this.username = localStorage.getItem('username');
+  }
+
   onSubmit(): void {
     if (!this.formValid()) {
       // If passwords don't match, show an alert
