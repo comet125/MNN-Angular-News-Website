@@ -19,38 +19,35 @@ export class LoginPageComponent {
   constructor(private router: Router, private http: HttpClient) { }
 
   onSubmit() {
-    // Check if the entered email and password match the admin credentials
-    if (this.email === 'admin' && this.password === 'admin') {
-      alert("Administrator login success");
-      this.router.navigate(['/admin-dash']);
-    } else {
-      const url = 'http://localhost/database/login.php';
+    const url = 'http://localhost/database/login.php';
+    const formData = { email: this.email, password: this.password };
 
-      const formData = {
-        email: this.email,
-        password: this.password
-      };
+    this.http.post(url, formData, {
+      headers: { 'Content-Type': 'application/json' }
+    }).subscribe({
+      next: (response: any) => {
+        if (response.status === 'success') {
+          console.log('Login uspješan:', response);
 
-      this.http.post(url, formData, {
-        headers: {
-          'Content-Type': 'application/json'  // Ensure content-type is JSON
-        }
-      }).subscribe({
-        next: (response: any) => {
-          console.log('Uspjeh:', response);
+          if (formData.email === 'admin' && formData.password === 'admin') {
+            localStorage.setItem('role', 'admin'); // Postavi ulogu
+            console.log('Ulogovan kao: admin');
+            this.router.navigate(['/admin-dash']);
 
-          if (response.status === 'success') {
-            // Redirect only if login is successful
-            this.router.navigate(['/home']);
           } else {
-            // Show error if login fails (user not found or incorrect password)
-            alert(response.message);
+            localStorage.setItem('role', 'user'); // Postavi ulogu
+            console.log('Ulogovan kao: user');
+            this.router.navigate(['/home']);
           }
-        },
-        error: (error) => {
-          console.error('Greška:', error);
+        } else {
+          console.warn('Neuspješan login:', response.message || 'Pogrešni podaci');
+          alert(response.message || "Neuspješna prijava.");
         }
-      });
-    }
+      },
+      error: (error) => {
+        console.error('Greška prilikom prijave:', error);
+        alert("Došlo je do greške. Pokušajte ponovo.");
+      }
+    });
   }
 }
