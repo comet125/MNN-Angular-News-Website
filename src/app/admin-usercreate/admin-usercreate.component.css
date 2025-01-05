@@ -1,0 +1,27 @@
+/* Admin Panel - User Creation Form */
+.container {
+  max-width: 900px;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+button {
+  width: 50%;
+}
+
+@media (max-width: 768px) {
+  .form-group input {
+    padding: 10px;
+  }
+}
+
+.row.justify-content-center {
+  justify-content: center;
+}
