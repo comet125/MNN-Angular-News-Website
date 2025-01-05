@@ -1,34 +1,58 @@
-import { Component } from '@angular/core';
-import {NewsCardComponent} from '../news-card/news-card.component';
+import { Component, OnInit } from '@angular/core';
+import { NewsService } from '../services/news.service';
+import { Listing } from '../models/Listing';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
+import {NewsCardComponent} from '../news-card/news-card.component';
 import {CalendarComponent} from '../calendar/calendar.component';
 import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
+  templateUrl: './home-page.component.html',
   imports: [
-    NewsCardComponent,
     NgForOf,
-    CalendarComponent,
     NgIf,
+    NewsCardComponent,
     NgClass,
+    CalendarComponent,
     RouterLink
   ],
-  templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.css'
+  styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent {
-  calendarVisible = false;
 
-  newsItems = [
-    { title: 'News 1', content: 'This is the first news item.' },
-    { title: 'News 2', content: 'This is the second news item.' },
-    { title: 'News 3', content: 'This is the third news item.' },
-    { title: 'News 4', content: 'This is the fourth news item.' },
-    { title: 'News 5', content: 'This is the fifth news item.' },
-  ];
+export class HomePageComponent implements OnInit {
+  calendarVisible = false;
 
   toggleCalendar() {
     this.calendarVisible = !this.calendarVisible;
   }
+
+  listingList: Listing[] = [];
+
+  constructor(private newsService: NewsService) { }
+
+  ngOnInit(): void {
+    this.fetchNews();
+  }
+
+  fetchNews(): void {
+    this.newsService.getNews().subscribe({
+      next: (newsItems) => {
+        console.log(JSON.stringify(newsItems, null, 2));
+        // Corrected mapping to match API response
+        this.listingList = newsItems.map(item => new Listing(
+          item.title,            // Use 'title' from API
+          item.image_url,        // Use 'image_url' from API
+          item.description,      // Use 'description' from API
+          item.tag,
+          item.creation_date    // Use 'creation_date' from API
+        ));
+      },
+      error: (error) => {
+        console.error('Error fetching news:', error);
+        alert('Failed to load news items.');
+      }
+    });
+  }
 }
+

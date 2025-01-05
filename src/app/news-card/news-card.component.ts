@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-news-card',
@@ -6,6 +6,11 @@ import { Component } from '@angular/core';
   templateUrl: './news-card.component.html',
   styleUrl: './news-card.component.css'
 })
-export class NewsCardComponent {
 
+export class NewsCardComponent {
+  @Input() newsHeading!: string;
+  @Input() imgURL!: string;
+  @Input() newsDesc!: string;
+  @Input() newsTag!: string;
+  @Input() newsDate!: string;
 }

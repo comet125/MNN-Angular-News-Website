@@ -27,8 +27,14 @@
 
   <div class="row mt-5">
     <h1 class="positioned-title">News</h1>
-    <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let news of newsItems">
-      <app-news-card></app-news-card>
+    <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let listing of listingList">
+      <app-news-card
+        [newsHeading]="listing.title"
+        [imgURL]="listing.image_url"
+        [newsDesc]="listing.description"
+        [newsTag]="listing.tag"
+        [newsDate]="listing.creation_date">
+      </app-news-card>
     </div>
   </div>
 </div>
