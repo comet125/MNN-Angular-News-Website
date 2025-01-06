@@ -1,0 +1,51 @@
+<div class="container mt-4">
+  <table class="table table-striped mt-3">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Headline</th>
+      <th>Image URL</th>
+      <th>Image Preview</th>
+      <th>Content</th>
+      <th>Author</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of news">
+      <td>{{ user.id }}</td>
+      <td>{{ user.title }}</td>
+      <td>{{ user.image_url }}</td>
+      <td><img class="img_preview" alt="preview image" [src]="user.image_url"></td>
+      <td>{{ user.description }}</td>
+      <td>{{ user.tag }}</td>
+      <td>
+        <button
+          class="btn btn-sm btn-primary me-1"
+          (click)="editField(user, 'title')"
+        >
+          Edit Headline
+        </button>
+        <button
+          class="btn btn-sm btn-secondary me-1"
+          (click)="editField(user, 'image_url')"
+        >
+          Edit Image URL
+        </button>
+        <button
+          class="btn btn-sm btn-success me-1"
+          (click)="editField(user, 'description')"
+        >
+          Edit Content
+        </button>
+        <button
+          class="btn btn-sm btn-danger"
+          (click)="deleteUser(user.id)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

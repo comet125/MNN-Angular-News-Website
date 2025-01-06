@@ -1,17 +1,25 @@
 import {Component, OnInit} from '@angular/core';
-import {NgForOf} from '@angular/common';
+import {DatePipe, NgForOf, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {NewsService} from '../services/news.service';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-calendar',
   imports: [
     NgForOf,
-    FormsModule
+    FormsModule,
+    DatePipe,
+    NgIf
   ],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css'
 })
 export class CalendarComponent implements OnInit {
+  newsData: any[] = [];
+
+  constructor(private newsService: NewsService, private http: HttpClient) {}
+
   months = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
@@ -21,11 +29,12 @@ export class CalendarComponent implements OnInit {
   selectedMonth = new Date().getMonth();
   selectedYear = new Date().getFullYear();
   dates: { day: number; fullDate: string }[] = [];
-  newsDates: string[] = ['2025-01-15', '2025-01-20', '2025-02-10']; // Sample news dates
+  newsDates: string[] = [];
 
   ngOnInit() {
     this.initializeYears();
     this.updateCalendar();
+    this.fetchNewsDates();
   }
 
   initializeYears() {
@@ -75,7 +84,27 @@ export class CalendarComponent implements OnInit {
   selectDate(date: string) {
     if (date) {
       console.log(`Selected date: ${date}`);
-      // Placeholder for filtering news by the selected date
+      this.newsService.getNewsByDate(date).subscribe((news) => {
+        this.newsData = news; // Store the fetched news in the newsData array
+        console.log('Filtered News:', this.newsData);
+      }, error => {
+        console.error('Error fetching news:', error);
+      });
     }
+  }
+
+  fetchNewsDates() {
+    // Call the PHP backend to fetch distinct news dates
+    this.http.get<{ status: string, data: string[] }>('http://localhost/database/get-news.php')
+      .subscribe(response => {
+        if (response.status === 'success') {
+          this.newsDates = response.data; // Populate the newsDates array
+          console.log('Fetched news dates:', this.newsDates);
+        } else {
+          console.error('Failed to fetch news dates');
+        }
+      }, error => {
+        console.error('Error fetching news dates:', error);
+      });
   }
 }

@@ -29,3 +29,22 @@
     </div>
   </div>
 </div>
+
+<div class="container mt-4">
+  <div class="row" *ngIf="newsData.length > 0">
+    <div class="col-md-4 mb-3" *ngFor="let news of newsData">
+      <div class="card">
+        <img *ngIf="news.image_url" [src]="news.image_url" class="card-img-top" alt="News image">
+        <div class="card-body">
+          <h5 class="card-title">{{ news.title }}</h5>
+          <p class="card-text">{{ news.description }}</p>
+          <p class="card-text"><small class="text-muted">Created on: {{ news.creation_date | date }}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="newsData.length === 0">
+    <p>Select a date. No news here.</p>
+  </div>
+</div>
+
