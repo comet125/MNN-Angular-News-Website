@@ -17,7 +17,7 @@ export class AppComponent {
   constructor(private router: Router) {}
 
   shouldShowLayout(): boolean {
-    const excludedRoutes = ['/', '/signup', '/login', '/admin-dash'];
+    const excludedRoutes = ['/', '/signup', '/login', '/admin-dash', '/landing', '/notfound'];
     return !excludedRoutes.includes(this.router.url);
   }
 }

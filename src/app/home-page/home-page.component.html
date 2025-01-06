@@ -1,97 +1,112 @@
-<div class="container mt-5">
-  <div class="jumbotron text-center p-5 bg-gradient-blue">
-    <h1 class="display-4 text-white">Welcome to MNN</h1>
-    <p class="lead text-white">
-      Browse the latest and greatest news in the region with Mateo News Network. We are an independent user-based news provider. Follow the link to learn more about us and our team.
+<div class="experiment">
+<div class="container-fluid p-0 vh-100 d-flex flex-column">
+  <!-- Gradient Header -->
+  <div class="distance-jumbotron">
+  <div class="jumbotron text-center p-5 gradient-left text-white">
+    <h1 class="display-4">The latest news in the region</h1>
+    <p class="lead">
+      Welcome back, {{ userName }}
     </p>
-    <button class="btn btn-light btn-lg mt-3" routerLink="/about">Learn More</button>
+  </div>
   </div>
 
+  <!-- Content Section -->
   <div class="container mt-4">
-    <button class="btn btn-secondary w-100"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#calendarCollapse"
-            aria-expanded="false"
-            aria-controls="calendarCollapse"
-            (click)="toggleCalendar()">Filter by date</button>
-
-    <div *ngIf="calendarVisible" class="calendar-container mt-3" [ngClass]="{'show': calendarVisible}">
-      <div class="card p-3">
-        <h5 class="card-title">Calendar</h5>
-        <app-calendar></app-calendar>
-      </div>
-    </div>
-  </div>
-
-  <div class="container mt-4">
-    <button class="btn btn-primary bg-gradient-blue w-100"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#submitCollapse"
-            aria-expanded="false"
-            aria-controls="submitCollapse"
-            (click)="toggleSubmit()">Submit your own news</button>
-
-    <div *ngIf="submitVisible" class="calendar-container mt-3" [ngClass]="{'show': submitVisible}">
-      <div class="card p-3">
-        <h5 class="card-title">Add news entry</h5>
-        <app-news-creation></app-news-creation>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="row mt-5">
-    <h1 class="positioned-title">News</h1>
-    <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let listing of listingList">
-      <app-news-card
-        [newsHeading]="listing.title"
-        [imgURL]="listing.image_url"
-        [newsTag]="listing.tag"
-        [newsDate]="listing.creation_date"
-        (click)="openModal(listing)">
-      </app-news-card>
-    </div>
-
-
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="newsModal"
-      tabindex="-1"
-      aria-labelledby="newsModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="newsModalLabel">{{ selectedNews?.title }}</h5>
+    <!-- Collapsing Buttons -->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card-bgr card shadow-sm mb-4">
+          <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Filter by Date</h5>
             <button
+              class="btn secondary-color btn-secondary w-100 btn-sm"
               type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+              data-bs-toggle="collapse"
+              data-bs-target="#calendarCollapse"
+              aria-expanded="false"
+              aria-controls="calendarCollapse"
+              (click)="toggleCalendar()">Toggle</button>
           </div>
-          <div class="modal-body">
-            <img
-              *ngIf="selectedNews?.image_url"
-              [src]="selectedNews?.image_url"
-              alt="news image"
-              class="img-fluid mb-3"
-            />
-            <p>{{ selectedNews?.description }}</p>
-            <i>Submitted by: &#64;{{ selectedNews?.tag }}</i>
-            <p><small>Published: {{ selectedNews?.creation_date }}</small></p>
+          <div id="calendarCollapse" [ngClass]="{'show': calendarVisible}" class="collapse">
+            <div class="card-body">
+              <app-calendar></app-calendar>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card-bgr card shadow-sm mb-4">
+          <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Submit Your News</h5>
+            <button
+              class="btn btn-primary btn-sm"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#submitCollapse"
+              aria-expanded="false"
+              aria-controls="submitCollapse"
+              (click)="toggleSubmit()">Toggle</button>
+          </div>
+          <div id="submitCollapse" [ngClass]="{'show': submitVisible}" class="collapse">
+            <div class="card-body">
+              <app-news-creation></app-news-creation>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
+  <div class="footer-evade">
+    <div class="container mt-4">
+      <h1 class="latest-color mb-4">All news</h1>
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let listing of listingList">
+          <app-news-card
+            [newsHeading]="listing.title"
+            [imgURL]="listing.image_url"
+            [newsTag]="listing.tag"
+            [newsDate]="listing.creation_date"
+            (click)="openModal(listing)">
+          </app-news-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="newsModal"
+    tabindex="-1"
+    aria-labelledby="newsModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="newsModalLabel">{{ selectedNews?.title }}</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <img
+            *ngIf="selectedNews?.image_url"
+            [src]="selectedNews?.image_url"
+            alt="news image"
+            class="img-fluid mb-3"
+          />
+          <p>{{ selectedNews?.description }}</p>
+          <i>Submitted by: &#64;{{ selectedNews?.tag }}</i>
+          <p><small>Published: {{ selectedNews?.creation_date }}</small></p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-<br>
-<br>
-<br>
-<br>
+</div>

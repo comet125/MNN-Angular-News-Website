@@ -1,32 +1,69 @@
-.bg-gradient-blue {
-  background: linear-gradient(45deg, #007bff, #00d4ff);
+.experiment{
+  background: radial-gradient(circle, rgba(106, 17, 203, 0.32), rgba(255, 255, 255, 0));
+  height: 100%;
+  overflow-y: scroll;
+}
+/* Gradient Header */
+.gradient-left {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
   color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.container.mt-5 {
-  background-color: #f8f8f8;  /* Adjust this to your desired background color */
-  border-radius: 10px;  /* Adjust this to control how rounded the corners are */
-  padding: 20px;
+.footer-evade {
+  padding-bottom: 100px;
 }
 
-
-.positioned-title {
-  margin-left: 15px;
-  padding-bottom: 20px;
+.latest-color{
+  color: black ;
 }
 
-.calendar-container {
-  opacity: 0;
-  transform: scale(0.95);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  display: block;
+.secondary-color {
+  background: linear-gradient(135deg, #6c757d, #8f9498) !important;
 }
 
-.calendar-container.show {
-  opacity: 1;
-  transform: scale(1);
+.distance-jumbotron{
+  margin-top: 30px;
 }
 
+.card-bgr {
+  border-radius: 20px;
+}
+/* Card Header Styling */
+.card-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+}
 
+/* Card Body */
+.card-body {
+  padding: 1.5rem;
+}
+
+/* News Section */
+h1 {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Button Styling */
+.btn-primary, .btn-secondary {
+  width: 100%;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+  border: none;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  border: none;
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+  opacity: 0.9;
+}

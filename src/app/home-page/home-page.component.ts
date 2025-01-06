@@ -4,7 +4,6 @@ import { Listing } from '../models/Listing';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {NewsCardComponent} from '../news-card/news-card.component';
 import {CalendarComponent} from '../calendar/calendar.component';
-import {RouterLink} from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import {NewsCreationComponent} from '../news-creation/news-creation.component';
 
@@ -17,7 +16,6 @@ import {NewsCreationComponent} from '../news-creation/news-creation.component';
     NewsCardComponent,
     NgClass,
     CalendarComponent,
-    RouterLink,
     NewsCreationComponent
   ],
   styleUrls: ['./home-page.component.css']
@@ -28,6 +26,7 @@ export class HomePageComponent implements OnInit {
   submitVisible = false;
   listingList: Listing[] = [];
   selectedNews: Listing | null = null;
+  userName = localStorage.getItem('username');
 
   constructor(private newsService: NewsService, @Inject(PLATFORM_ID) private platformId: Object) { }
 

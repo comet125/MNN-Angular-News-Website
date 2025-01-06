@@ -25,7 +25,7 @@ export class AuthGuard implements CanActivate {
       return true;
     } else {
       console.warn(`Pristup odbijen za ${userRole}`);
-      alert('Nemate dozvolu za pristup ovoj stranici!');
+      alert('You do not have access to view this page. Please log in as a user!');
       this.router.navigate(['/login']);
       return false;
     }

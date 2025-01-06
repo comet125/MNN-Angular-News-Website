@@ -1,8 +1,9 @@
-<div id="card" (click)="onCardClick()">
-  <i>&#64;{{ newsTag }}</i>
-  <p>{{ newsDate }}</p>
-  <h3>{{ newsHeading }}</h3>
-  <img [src]="imgURL" alt="header pic">
-  <br>
-  <p>{{ newsDesc }}</p>
+<div id="card" class="news-card" (click)="onCardClick()">
+  <i class="news-tag">&#64;{{ newsTag }}</i>
+  <p class="news-date">{{ newsDate }}</p>
+  <h3 class="news-heading">{{ newsHeading }}</h3>
+  <div class="news-image-wrapper">
+    <img [src]="imgURL" alt="header pic" class="news-image">
+  </div>
+  <p class="news-desc">{{ newsDesc }}</p>
 </div>

@@ -1,77 +1,84 @@
-.fieldType {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+/* Full-page gradient background */
+.gradient-left {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
 }
 
-.login-container {
-  background-color: #ffffff;
-  padding: 20px 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.gradient-right {
+  background: linear-gradient(135deg, #ffffff, #e0e0e0);
+}
+
+
+
+/* Gradient Background with Animation */
+.gradient-left {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  background-size: 400% 400%; /* Larger size to allow smooth transitions */
+  animation: gradientShift 8s ease infinite; /* Infinite animation */
+  color: white;
+}
+
+/* Keyframes for Gradient Animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+/* Glow effect for the animated text */
+.animated-text {
+  font-family: 'Monoton', cursive;
+  font-size: 6rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  animation: glow 1.5s infinite alternate, fadeIn 2s ease-out;
+}
+
+/* Glow Animation */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+  }
+  to {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.74), 0 0 30px #ff00ff, 0 0 40px #ff00ff;
+  }
+}
+
+/* Fade-in Animation for the Text */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* Login Box */
+.login-box {
   width: 100%;
   max-width: 400px;
+  border-radius: 10px;
+  background: white;
 }
 
-.login-form {
-  display: flex;
-  flex-direction: column;
+/* Form elements */
+label {
+  font-weight: bold;
 }
 
-.login-form h2 {
-  margin-bottom: 20px;
-  text-align: center;
-  color: #333;
-}
-
-.login-form label {
-  margin-bottom: 5px;
-  font-size: 14px;
-  color: #555;
-}
-
-.login-form input {
-  margin-bottom: 15px;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-}
-
-.login-form input:focus {
-  border-color: #007bff;
-}
-
-.login-form button {
-  padding: 10px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #007bff;
+.btn-primary {
+  background-color: #2575fc;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
-.login-form button:hover {
-  background-color: #0056b3;
-}
-
-.login-form p {
-  text-align: center;
-  font-size: 14px;
-  color: #666;
-}
-
-.login-form a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.login-form a:hover {
-  text-decoration: underline;
+.btn-primary:hover {
+  background-color: #6a11cb;
 }

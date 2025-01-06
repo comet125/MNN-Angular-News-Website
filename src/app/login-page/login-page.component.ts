@@ -3,6 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-login-page',
   imports: [
@@ -16,7 +17,19 @@ export class LoginPageComponent {
   email: string = '';
   password: string = '';
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) {
+    this.checkUserLoggedIn();
+  }
+
+  checkUserLoggedIn() {
+    const username = localStorage.getItem('username');
+    const firstName = localStorage.getItem('first_name');
+    const surname = localStorage.getItem('surname');
+
+    if (username && firstName && surname) {
+      this.router.navigate(['/home']);
+    }
+  }
 
   onSubmit() {
     const url = 'http://localhost/database/login.php';
@@ -31,7 +44,8 @@ export class LoginPageComponent {
           console.log(response);
 
           if (formData.email === 'admin' && formData.password === 'admin') {
-            localStorage.setItem('role', 'admin'); // Postavi ulogu
+            localStorage.setItem('role', 'admin');
+            localStorage.setItem('username', 'admin');
             console.log('Ulogovan kao: admin');
             this.router.navigate(['/admin-dash']);
 

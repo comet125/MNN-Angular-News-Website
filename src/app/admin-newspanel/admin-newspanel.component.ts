@@ -4,9 +4,9 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin-newspanel',
-    imports: [
-        NgForOf
-    ],
+  imports: [
+    NgForOf
+  ],
   templateUrl: './admin-newspanel.component.html',
   styleUrl: './admin-newspanel.component.css'
 })
@@ -22,7 +22,7 @@ export class AdminNewspanelComponent {
 
   // Fetch all news listings
   fetchNews(): void {
-    this.http.get(`${this.apiUrl}/get-news.php`).subscribe(
+    this.http.get(`${this.apiUrl}/admin-getnews.php`).subscribe(
       (response: any) => {
         this.news = response.data; // Assuming the PHP returns a "data" field with the news
       },
@@ -84,4 +84,3 @@ export class AdminNewspanelComponent {
     }
   }
 }
-
