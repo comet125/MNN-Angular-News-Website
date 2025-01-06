@@ -4,9 +4,9 @@ import { Listing } from '../models/Listing';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {NewsCardComponent} from '../news-card/news-card.component';
 import {CalendarComponent} from '../calendar/calendar.component';
-import {RouterLink} from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import {NewsCreationComponent} from '../news-creation/news-creation.component';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-home-page',
@@ -17,7 +17,6 @@ import {NewsCreationComponent} from '../news-creation/news-creation.component';
     NewsCardComponent,
     NgClass,
     CalendarComponent,
-    RouterLink,
     NewsCreationComponent
   ],
   styleUrls: ['./home-page.component.css']
@@ -28,11 +27,22 @@ export class HomePageComponent implements OnInit {
   submitVisible = false;
   listingList: Listing[] = [];
   selectedNews: Listing | null = null;
+  userName: string | null = null;
 
   constructor(private newsService: NewsService, @Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit(): void {
+    this.decryptUsername();
     this.fetchNews();
+  }
+
+  // Decrypt the username stored in localStorage
+  decryptUsername(): void {
+    const encryptedUsername = localStorage.getItem('username');
+    if (encryptedUsername) {
+      const bytes = CryptoJS.AES.decrypt(encryptedUsername, 'sranje123'); // Decrypt using the same secret key
+      this.userName = bytes.toString(CryptoJS.enc.Utf8); // Get the decrypted string
+    }
   }
 
   toggleCalendar() {
@@ -42,13 +52,15 @@ export class HomePageComponent implements OnInit {
   fetchNews(): void {
     this.newsService.getNews().subscribe({
       next: (newsItems) => {
-        this.listingList = newsItems.map(item => new Listing(
-          item.title,
-          item.image_url,
-          item.description,
-          item.tag,
-          item.creation_date
-        ));
+        this.listingList = newsItems
+          .sort((a, b) => new Date(b.creation_date).getTime() - new Date(a.creation_date).getTime()) // Sort newest to oldest
+          .map(item => new Listing(
+            item.title,
+            item.image_url,
+            item.description,
+            item.tag,
+            item.creation_date
+          ));
       },
       error: (error) => {
         console.error('Error fetching news:', error);
@@ -56,6 +68,7 @@ export class HomePageComponent implements OnInit {
       }
     });
   }
+
 
   openModal(listing: Listing): void {
     if (isPlatformBrowser(this.platformId)) {

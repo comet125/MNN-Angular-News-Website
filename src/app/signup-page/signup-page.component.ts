@@ -59,6 +59,7 @@ export class SignupPageComponent {
         this.router.navigate(['/login']);
       },
       error: (error) => {
+        alert("Account creation was not successful - The email or username already exists! ");
         console.log(formData);
         console.error('Greška:', error);
       }

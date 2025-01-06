@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {NgClass, NgIf} from '@angular/common';
 import {FooterComponent} from '../footer/footer.component';
-import {RouterLink} from '@angular/router';
+import {Router} from '@angular/router';
 import { AdminUserPanelComponent } from '../admin-userpanel/admin-userpanel.component';
 import {AdminUsercreateComponent} from '../admin-usercreate/admin-usercreate.component';
 import {NewsCreationComponent} from '../news-creation/news-creation.component';
@@ -13,7 +13,6 @@ import {AdminNewspanelComponent} from '../admin-newspanel/admin-newspanel.compon
     NgClass,
     NgIf,
     FooterComponent,
-    RouterLink,
     AdminUserPanelComponent,
     AdminUsercreateComponent,
     NewsCreationComponent,
@@ -27,6 +26,8 @@ export class AdminDashComponent {
   newsEditingVisible: boolean = false;
   userCreationVisible: boolean = false;
   newsAddVisible: boolean = false;
+
+  constructor(private router: Router,) {  }
 
   toggleUserEditing(): void {
     this.userEditingVisible = !this.userEditingVisible;
@@ -42,5 +43,13 @@ export class AdminDashComponent {
 
   toggleNewsAdd(): void {
     this.newsAddVisible = !this.newsAddVisible;
+  }
+
+  logout() {
+    localStorage.removeItem('first_name');
+    localStorage.removeItem('surname');
+    localStorage.removeItem('username');
+    localStorage.removeItem('role');
+    this.router.navigate(['/login']);
   }
 }

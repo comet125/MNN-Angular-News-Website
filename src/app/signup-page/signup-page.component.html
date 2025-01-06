@@ -1,29 +1,112 @@
-<div class="fieldType">
-  <div class="login-container">
-    <form class="login-form" (ngSubmit)="onSubmit()">
-      <h2>Register</h2>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
 
-      <label for="name">Username:</label>
-      <input type="text" id="name" name="name" placeholder="Enter your username" required [(ngModel)]="userData.name">
+<div class="d-flex vh-100">
+  <!-- Left Section -->
+  <div class="col-md-6 d-flex align-items-center justify-content-center gradient-left">
+    <div class="animated-text">mnn</div>
+  </div>
 
-      <label for="first-name">First name:</label>
-      <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required [(ngModel)]="userData.firstName">
+  <!-- Right Section -->
+  <div class="col-md-6 d-flex align-items-center justify-content-center gradient-right">
+    <div class="card shadow-lg p-4 login-box">
+      <h2 class="text-center mb-4">Register</h2>
+      <form (ngSubmit)="onSubmit()">
+        <!-- Username -->
+        <div class="mb-3">
+          <label for="name" class="form-label">Username:</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            name="name"
+            placeholder="Enter your username"
+            required
+            [(ngModel)]="userData.name"
+          />
+        </div>
 
-      <label for="surname">Surname:</label>
-      <input type="text" id="surname" name="surname" placeholder="Enter your surname" required [(ngModel)]="userData.surname">
+        <!-- First Name -->
+        <div class="mb-3">
+          <label for="first-name" class="form-label">First Name:</label>
+          <input
+            type="text"
+            id="first-name"
+            class="form-control"
+            name="first-name"
+            placeholder="Enter your first name"
+            required
+            [(ngModel)]="userData.firstName"
+          />
+        </div>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" placeholder="Enter your email" required [(ngModel)]="userData.email">
+        <!-- Surname -->
+        <div class="mb-3">
+          <label for="surname" class="form-label">Surname:</label>
+          <input
+            type="text"
+            id="surname"
+            class="form-control"
+            name="surname"
+            placeholder="Enter your surname"
+            required
+            [(ngModel)]="userData.surname"
+          />
+        </div>
 
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" placeholder="Create a password" required [(ngModel)]="userData.password">
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email:</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            name="email"
+            placeholder="Enter your email"
+            required
+            [(ngModel)]="userData.email"
+          />
+        </div>
 
-      <label for="confirm-password">Confirm Password:</label>
-      <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required [(ngModel)]="userData.confirmPassword">
+        <!-- Password -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Password:</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            name="password"
+            placeholder="Create a password"
+            required
+            [(ngModel)]="userData.password"
+          />
+        </div>
 
-      <button type="submit">Register</button>
+        <!-- Confirm Password -->
+        <div class="mb-3">
+          <label for="confirm-password" class="form-label">Confirm Password:</label>
+          <input
+            type="password"
+            id="confirm-password"
+            class="form-control"
+            name="confirm-password"
+            placeholder="Confirm your password"
+            required
+            [(ngModel)]="userData.confirmPassword"
+          />
+        </div>
 
-      <p>Already have an account? <a routerLink="/login">Login here</a></p>
-    </form>
+        <!-- Register Button -->
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+
+        <!-- Additional Info -->
+        <div class="text-center mt-3">
+          <p>Already have an account? <a routerLink="/login" class="link-primary">Login here</a></p>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

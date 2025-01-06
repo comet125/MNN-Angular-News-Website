@@ -1,37 +1,47 @@
-<!-- profile-settings.component.html -->
 <div class="footer-evasion">
   <div class="container mt-5">
-    <h2 class="text-center mb-4">Welcome, {{ permanentFirstName }} {{ permanentSurname }}</h2>
-    <h4 class="text-center mb-4">&#64;{{ username }}</h4>
-
-    <div class="text-center mb-4">
-      <img class="profile-icon" src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
-           alt="Profile Icon" style="width: 115px; height: 115px;">
+  <div class="d-flex align-items-center mb-4">
+    <div class="profile-section">
+      <img class="profile-icon" src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg" alt="Profile Icon" style="width: 115px; height: 115px;">
     </div>
+    <div class="text-section ms-4">
+      <h2>Welcome, {{ permanentFirstName }} {{ permanentSurname }}</h2>
+      <h4>&#64;{{ username }}</h4>
+    </div>
+  </div>
 
+    <!-- Form Section -->
     <form (ngSubmit)="onSubmit()">
-      <div class="mb-3">
-        <label for="firstName" class="form-label">First Name</label>
-        <input type="text" id="firstName" class="form-control" [(ngModel)]="firstName" name="firstName" required>
+      <!-- First Name and Surname in the same row -->
+      <div class="mb-3 row">
+        <div class="col-md-6">
+          <label for="firstName" class="form-label">First Name</label>
+          <input type="text" id="firstName" class="form-control" [(ngModel)]="firstName" name="firstName" required>
+        </div>
+        <div class="col-md-6">
+          <label for="surname" class="form-label">Surname</label>
+          <input type="text" id="surname" class="form-control" [(ngModel)]="surname" name="surname" required>
+        </div>
       </div>
 
       <div class="mb-3">
-        <label for="surname" class="form-label">Surname</label>
-        <input type="text" id="surname" class="form-control" [(ngModel)]="surname" name="surname" required>
-      </div>
-
-      <div class="mb-3">
-        <label for="oldPassword" class="form-label">Old Password</label>
+        <label for="oldPassword" class="form-label">
+          <i class="bi bi-shield-lock"></i> Old Password
+        </label>
         <input type="password" id="oldPassword" class="form-control" [(ngModel)]="oldPassword" name="oldPassword" required>
       </div>
 
       <div class="mb-3">
-        <label for="newPassword" class="form-label">New Password</label>
+        <label for="newPassword" class="form-label">
+          <i class="bi bi-key"></i> New Password
+        </label>
         <input type="password" id="newPassword" class="form-control" [(ngModel)]="newPassword" name="newPassword" required>
       </div>
 
       <div class="mb-3">
-        <label for="confirmPassword" class="form-label">Confirm New Password</label>
+        <label for="confirmPassword" class="form-label">
+          <i class="bi bi-key"></i> Confirm New Password
+        </label>
         <input type="password" id="confirmPassword" class="form-control" [(ngModel)]="confirmPassword" name="confirmPassword" required>
       </div>
 
@@ -40,11 +50,11 @@
       </div>
 
       <div class="d-grid gap-2 mt-4">
-        <button type="submit" class="btn btn-primary" [disabled]="!formValid()">Save Changes</button>
+        <button type="submit" class="btn btn-gradient-blue" [disabled]="!formValid()">Save Changes</button>
       </div>
 
       <div class="d-grid gap-2 mt-3">
-        <a routerLink="/login" class="btn btn-danger">Log Out</a>
+        <button (click)="logout()" class="btn btn-danger">Log Out</button>
       </div>
     </form>
   </div>

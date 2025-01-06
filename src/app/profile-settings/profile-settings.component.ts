@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {Router, RouterLink} from '@angular/router';
+import {Router} from '@angular/router';
 import { OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {NgIf} from '@angular/common';
+import * as CryptoJS from 'crypto-js';
 
 
 @Component({
   selector: 'app-profile-settings',
   imports: [
     FormsModule,
-    RouterLink,
     NgIf
   ],
   templateUrl: './profile-settings.component.html',
@@ -31,9 +31,23 @@ export class ProfileSettingsComponent implements OnInit {
 
   constructor(private router: Router, private http: HttpClient) {}
 
+  logout(): void {
+    localStorage.removeItem('first_name');
+    localStorage.removeItem('surname');
+    localStorage.removeItem('username');
+    localStorage.removeItem('role');
+    this.router.navigate(['/login']);
+  }
+
   ngOnInit(): void {
-    // Get username from localStorage
-    this.username = localStorage.getItem('username');
+    // Decrypt the username if it exists in localStorage
+    const encryptedUsername = localStorage.getItem('username');
+    if (encryptedUsername) {
+      const bytes = CryptoJS.AES.decrypt(encryptedUsername, 'sranje123');
+      this.username = bytes.toString(CryptoJS.enc.Utf8); // Decrypted username
+    }
+
+    // Retrieve first name and surname as usual (no decryption)
     this.permanentFirstName = localStorage.getItem('first_name');
     this.permanentSurname = localStorage.getItem('surname');
 
@@ -44,6 +58,7 @@ export class ProfileSettingsComponent implements OnInit {
       alert('Session timed out. Please log out and log back in again');
     }
   }
+
 
   // Check if new passwords match
   formValid(): boolean {

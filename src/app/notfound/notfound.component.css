@@ -1,0 +1,59 @@
+/* Fullscreen Gradient Animation */
+.full-screen-404 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  animation: gradient-animation 10s ease infinite; /* Smoother and slower animation */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+  }
+  50% {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+  }
+  100% {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+  }
+}
+
+.info-text {
+  color: #fff;
+}
+
+/* 404 Text Styling */
+.error-message {
+  font-family: 'Monoton', cursive;
+  font-size: 8rem;
+  color: white;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(246, 246, 246, 0.57);
+}
+
+/* Button Styling (No gradient, white background) */
+.btn-return-home {
+  background-color: white;
+  border: 2px solid #2575fc;
+  color: #2575fc;
+  padding: 5px 155px;
+  border-radius: 18px;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(37, 117, 252, 0.3);
+}
+
+.btn-return-home:hover {
+  background-color: #2575fc;
+  color: white;
+  box-shadow: 0 0 20px rgba(37, 117, 252, 0.7);
+}

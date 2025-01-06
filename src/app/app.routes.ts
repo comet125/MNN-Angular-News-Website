@@ -7,11 +7,13 @@ import { AboutPageComponent } from './about-page/about-page.component';
 import { ContactComponent } from './contact/contact.component';
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
 import { NewsCreationComponent } from './news-creation/news-creation.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { GuestComponent } from './guest/guest.component';
 import {provideHttpClient} from '@angular/common/http';
 import {AuthGuard} from './auth.guard';
 
 export const routes: Routes = [
-  { path: '', component: LoginPageComponent }, // Default route
+  { path: '', component: GuestComponent }, // Default route
   { path: 'login', component: LoginPageComponent },
   { path: 'signup', component: SignupPageComponent },
   { path: 'home', component: HomePageComponent, canActivate: [AuthGuard], data: {roles: 'user'} },
@@ -19,7 +21,10 @@ export const routes: Routes = [
   { path: 'about', component: AboutPageComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'admin-dash', component: AdminDashComponent, canActivate: [AuthGuard], data: { role:'admin' } },
-  { path: 'submit', component: NewsCreationComponent }
+  { path: 'submit', component: NewsCreationComponent},
+  { path: 'landing', component: GuestComponent },
+  { path: 'notfound', component: NotfoundComponent },
+  { path: '**', redirectTo: 'notfound', pathMatch: 'full' },
 ];
 
 export const appConfig = {

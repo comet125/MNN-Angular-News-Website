@@ -1,17 +1,31 @@
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 80px;
-  margin-top: 15px;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin: 15px;
   background-color: #ffffff;
   padding: 10px 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  outline-color: #2b6df8;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(43, 109, 248, 0.32);
+  position: relative;
 }
 
+/* Centered Logo */
+.navbar-logo {
+  font-family: 'Monoton', cursive;
+  font-size: 30px;
+  color: #2b6df8;
+  text-align: center;
+  flex-grow: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1; /* Keeps it above other elements */
+}
 
+/* Hamburger Menu */
 .navbar-hamburger {
   display: flex;
   flex-direction: column;
@@ -20,6 +34,7 @@
   height: 20px;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
+  z-index: 2; /* Ensures it's clickable */
 }
 
 .navbar-hamburger:hover {
@@ -46,8 +61,8 @@
   transform: translateY(-8px) rotate(-45deg);
 }
 
+/* Navbar Menu */
 .navbar-menu {
-  font-family: Arial, sans-serif;
   display: none;
   width: 20%;
   flex-direction: column;
@@ -82,44 +97,46 @@
   transition: 0.3s;
 }
 
+/* Submit Link */
 .submit-link {
   padding: 10px 20px;
   margin: 10px;
   text-decoration: none;
   color: #ffffff;
   background: rgb(0,139,255);
-  background: linear-gradient(90deg, rgba(0,139,255,1) 0%, rgba(1,212,255,1) 100%);
+  background: linear-gradient(90deg, rgb(84, 48, 219) 0%, rgb(127, 108, 198) 100%);
   font-size: 20px;
-  border-bottom: 1px solid #f4f4f4;
   border-radius: 10px;
-}
-
-.submit-link:last-child {
-  border-bottom: none;
 }
 
 .submit-link:hover {
   background: rgb(255,255,255);
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(1,212,255,1) 100%);
+  background: linear-gradient(90deg, rgb(147, 129, 216) 0%, rgb(255, 255, 255) 100%);
   color: #333;
   transition: 0.3s;
 }
 
+/* Profile Icon */
 .navbar-profile {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.profile-icon {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  border: 2px solid #333;
+.navbar-profile i {
+  font-size: 24px;
+  color: #333;
   transition: transform 0.3s ease;
 }
 
-.profile-icon:hover {
+.navbar-profile i:hover {
   transform: scale(1.2);
-  cursor: pointer;
+  color: #007bff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .navbar-logo {
+    font-size: 20px;
+  }
 }
