@@ -6,6 +6,7 @@ import {NewsCardComponent} from '../news-card/news-card.component';
 import {CalendarComponent} from '../calendar/calendar.component';
 import { isPlatformBrowser } from '@angular/common';
 import {NewsCreationComponent} from '../news-creation/news-creation.component';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-home-page',
@@ -26,12 +27,22 @@ export class HomePageComponent implements OnInit {
   submitVisible = false;
   listingList: Listing[] = [];
   selectedNews: Listing | null = null;
-  userName = localStorage.getItem('username');
+  userName: string | null = null;
 
   constructor(private newsService: NewsService, @Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit(): void {
+    this.decryptUsername();
     this.fetchNews();
+  }
+
+  // Decrypt the username stored in localStorage
+  decryptUsername(): void {
+    const encryptedUsername = localStorage.getItem('username');
+    if (encryptedUsername) {
+      const bytes = CryptoJS.AES.decrypt(encryptedUsername, 'sranje123'); // Decrypt using the same secret key
+      this.userName = bytes.toString(CryptoJS.enc.Utf8); // Get the decrypted string
+    }
   }
 
   toggleCalendar() {

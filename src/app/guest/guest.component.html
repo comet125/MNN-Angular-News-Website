@@ -1,0 +1,108 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+
+<nav class="navbar">
+  <!-- Hamburger Menu -->
+  <div class="navbar-hamburger" (click)="toggleMenu()" [class.active]="menuOpen">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- MNN Logo in the Center -->
+  <div class="navbar-logo">
+    mnn
+  </div>
+
+  <!-- Navbar Menu -->
+  <div class="navbar-menu" [class.open]="menuOpen">
+    <a href="/landing" class="navbar-link">Home</a>
+    <a href="/about" class="navbar-link">About</a>
+    <a href="/contact" class="navbar-link">Contact</a>
+  </div>
+
+  <!-- Profile Icon -->
+  <div class="navbar-profile">
+     <i class="bi bi-person-circle"></i>
+  </div>
+</nav>
+
+
+<div class="container-fluid p-0">
+  <!-- Hero Section -->
+  <div class="jumbotron text-center p-5 bg-gradient-blue text-white">
+    <div class="container">
+      <h1 class="custom-heading font-weight-bold">Welcome to</h1>
+      <h1 class="fonted-logo">mnn</h1>
+      <p class="lead mt-3">
+        Discover the latest and greatest news in your region with Mateo News Network.
+        Stay informed with our independent, user-based news platform. Join us today!
+      </p>
+      <div class="d-flex justify-content-center mt-4">
+        <button class="btn btn-light btn-lg me-3" routerLink="/about">Learn More</button>
+        <button class="btn my-color btn-primary btn-lg" routerLink="/signup">Sign Up</button>
+      </div>
+      <p class="mt-3">
+        <i><span>Already a user? </span><a routerLink="/login" class="text-light">Sign in</a></i>
+      </p>
+    </div>
+  </div>
+
+
+  <!-- Features Section -->
+  <div class="features-section py-5 bg-light">
+    <div class="container text-center">
+      <h2 class="mb-4">Why Choose Mateo News Network?</h2>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <i class="bi bi-globe text-primary fs-1"></i>
+          <h5 class="mt-3">News from everywhere</h5>
+          <p>Access news from across the globe, provided by our users</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <i class="bi bi-people text-primary fs-1"></i>
+          <h5 class="mt-3">Community Driven</h5>
+          <p>Join a growing community of contributors and readers</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <i class="bi bi-lightning-fill text-primary fs-1"></i>
+          <h5 class="mt-3">Real-Time Updates</h5>
+          <p>Stay informed with real-time news. Our users provide info on events as soon as they happen</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- News Section -->
+  <div class="news-section py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Browse the News</h2>
+      <h5 class="text-center text-muted mb-5">Sign in or create an account to view more</h5>
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let listing of listingList">
+          <app-news-card
+            [newsHeading]="listing.title"
+            [imgURL]="listing.image_url"
+            [newsTag]="listing.tag"
+            [newsDate]="listing.creation_date"
+            (click)="openModal(listing)">
+          </app-news-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Call-to-Action Section -->
+  <div class="cta-section text-center py-5 bg-primary text-white">
+    <h2>Join MNN Today!</h2>
+    <p class="mt-3">Create an account or sign in to enjoy personalized features, exclusive news, and more.</p>
+    <button class="btn btn-light btn-lg mt-3" routerLink="/signup">Get Started</button>
+  </div>
+</div>
