@@ -5,6 +5,7 @@ import {RouterLink} from '@angular/router';
 import { AdminUserPanelComponent } from '../admin-userpanel/admin-userpanel.component';
 import {AdminUsercreateComponent} from '../admin-usercreate/admin-usercreate.component';
 import {NewsCreationComponent} from '../news-creation/news-creation.component';
+import {AdminNewspanelComponent} from '../admin-newspanel/admin-newspanel.component';
 
 @Component({
   selector: 'app-admin-dash',
@@ -15,7 +16,8 @@ import {NewsCreationComponent} from '../news-creation/news-creation.component';
     RouterLink,
     AdminUserPanelComponent,
     AdminUsercreateComponent,
-    NewsCreationComponent
+    NewsCreationComponent,
+    AdminNewspanelComponent
   ],
   templateUrl: './admin-dash.component.html',
   styleUrl: './admin-dash.component.css'
