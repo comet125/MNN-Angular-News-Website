@@ -59,6 +59,24 @@
         </div>
      </div>
     </div>
+
+    <!-- news add -->
+    <div class="last-panel">
+      <button class="btn btn-secondary w-100"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#newsAddCollapse"
+              aria-expanded="false"
+              aria-controls="newsAddCollapse"
+              (click)="toggleNewsAdd()">Add News</button>
+
+      <div *ngIf="newsAddVisible" class="editing-container mt-3" [ngClass]="{'show': newsAddVisible}">
+        <div class="card p-3">
+          <h5 class="card-title">Add News</h5>
+          <app-news-creation></app-news-creation>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <app-footer></app-footer>

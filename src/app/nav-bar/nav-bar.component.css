@@ -76,13 +76,32 @@
   border-bottom: 1px solid #f4f4f4;
 }
 
-.navbar-link:last-child {
-  border-bottom: none;
-}
-
 .navbar-link:hover {
   background-color: #007bff;
   color: #ffffff;
+  transition: 0.3s;
+}
+
+.submit-link {
+  padding: 10px 20px;
+  margin: 10px;
+  text-decoration: none;
+  color: #ffffff;
+  background: rgb(0,139,255);
+  background: linear-gradient(90deg, rgba(0,139,255,1) 0%, rgba(1,212,255,1) 100%);
+  font-size: 20px;
+  border-bottom: 1px solid #f4f4f4;
+  border-radius: 10px;
+}
+
+.submit-link:last-child {
+  border-bottom: none;
+}
+
+.submit-link:hover {
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(1,212,255,1) 100%);
+  color: #333;
   transition: 0.3s;
 }
 

@@ -24,6 +24,23 @@
     </div>
   </div>
 
+  <div class="container mt-4">
+    <button class="btn btn-primary bg-gradient-blue w-100"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#submitCollapse"
+            aria-expanded="false"
+            aria-controls="submitCollapse"
+            (click)="toggleSubmit()">Submit your own news</button>
+
+    <div *ngIf="submitVisible" class="calendar-container mt-3" [ngClass]="{'show': submitVisible}">
+      <div class="card p-3">
+        <h5 class="card-title">Add news entry</h5>
+        <app-news-creation></app-news-creation>
+      </div>
+    </div>
+  </div>
+
 
   <div class="row mt-5">
     <h1 class="positioned-title">News</h1>

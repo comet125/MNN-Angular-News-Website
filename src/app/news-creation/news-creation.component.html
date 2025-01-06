@@ -1,0 +1,42 @@
+<div class="add-news-container">
+  <h2>Add News</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        id="title"
+        class="form-control"
+        [(ngModel)]="title"
+        name="title"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="image_url">Image URL</label>
+      <input
+        type="url"
+        id="image_url"
+        class="form-control"
+        [(ngModel)]="imageUrl"
+        name="image_url"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        class="form-control"
+        [(ngModel)]="description"
+        name="description"
+        rows="5"
+        required
+      ></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add News</button>
+  </form>
+</div>

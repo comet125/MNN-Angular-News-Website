@@ -6,6 +6,7 @@ import {NewsCardComponent} from '../news-card/news-card.component';
 import {CalendarComponent} from '../calendar/calendar.component';
 import {RouterLink} from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
+import {NewsCreationComponent} from '../news-creation/news-creation.component';
 
 @Component({
   selector: 'app-home-page',
@@ -16,13 +17,15 @@ import { isPlatformBrowser } from '@angular/common';
     NewsCardComponent,
     NgClass,
     CalendarComponent,
-    RouterLink
+    RouterLink,
+    NewsCreationComponent
   ],
   styleUrls: ['./home-page.component.css']
 })
 
 export class HomePageComponent implements OnInit {
   calendarVisible = false;
+  submitVisible = false;
   listingList: Listing[] = [];
   selectedNews: Listing | null = null;
 
@@ -66,6 +69,10 @@ export class HomePageComponent implements OnInit {
         });
       }
     }
+  }
+
+  toggleSubmit() {
+    this.submitVisible = !this.submitVisible;
   }
 }
 
