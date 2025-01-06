@@ -36,27 +36,29 @@ export class AdminNewspanelComponent {
   editField(newsItem: any, field: string): void {
     const newValue = prompt(`Enter new value for ${field}:`, newsItem[field]);
     if (newValue !== null && newValue.trim() !== '') {
-      const updatedData = { id: newsItem.id, field, value: newValue };
+      const updatedData = {
+        id: newsItem.id,
+        field,
+        value: newValue,
+        updateTag: true, // Send a flag to update the tag field
+      };
 
-      // Use PUT method for updating
-      this.http.put(`${this.apiUrl}/update-news.php`, updatedData, {
-        headers: { 'Content-Type': 'application/json' },
-      }).subscribe(
+      this.http.put(`${this.apiUrl}/update-news.php`, updatedData).subscribe(
         (response: any) => {
           if (response.status === 'success') {
             alert('Field updated successfully!');
-            this.fetchNews();
+            this.fetchNews(); // Refresh the table after the update
           } else {
             alert(`Failed to update field: ${response.message}`);
           }
         },
         (error) => {
           console.error('Error updating field:', error);
-          alert('Failed to update the field.');
         }
       );
     }
   }
+
 
   // Delete a news item by ID
 // Delete a news item by ID
