@@ -6,6 +6,7 @@ import { ProfileSettingsComponent } from './profile-settings/profile-settings.co
 import { AboutPageComponent } from './about-page/about-page.component';
 import { ContactComponent } from './contact/contact.component';
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
+import { NewsCreationComponent } from './news-creation/news-creation.component';
 import {provideHttpClient} from '@angular/common/http';
 import {AuthGuard} from './auth.guard';
 
@@ -18,6 +19,7 @@ export const routes: Routes = [
   { path: 'about', component: AboutPageComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'admin-dash', component: AdminDashComponent, canActivate: [AuthGuard], data: { role:'admin' } },
+  { path: 'submit', component: NewsCreationComponent }
 ];
 
 export const appConfig = {

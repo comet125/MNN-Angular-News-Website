@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <table class="table table-striped mt-3">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Username</th>
+      <th>First Name</th>
+      <th>Surname</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.firstName }}</td>
+      <td>{{ user.surname }}</td>
+      <td>
+        <button class="btn btn-sm btn-primary me-1" (click)="editField(user, 'email')">Edit Email</button>
+        <button class="btn btn-sm btn-secondary me-1" (click)="editField(user, 'username')">Edit Username</button>
+        <button class="btn btn-sm btn-success me-1" (click)="editField(user, 'firstName')">Edit First Name</button>
+        <button class="btn btn-sm btn-warning me-1" (click)="editField(user, 'surname')">Edit Surname</button>
+        <button class="btn btn-sm btn-danger" (click)="deleteUser(user.id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

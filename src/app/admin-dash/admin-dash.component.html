@@ -10,7 +10,6 @@
 
 
   <div class="action-panel">
-    <!-- user edit -->
     <button class="btn btn-secondary w-100"
           type="button"
            data-bs-toggle="collapse"
@@ -22,25 +21,62 @@
    <div *ngIf="userEditingVisible" class="editing-container mt-3" [ngClass]="{'show': userEditingVisible}">
       <div class="card p-3">
         <h5 class="card-title">User Editing</h5>
-        <p>placeholder</p>
+        <app-admin-userpanel></app-admin-userpanel>
       </div>
    </div>
+
+    <div class="other-panel">
+      <button class="btn btn-secondary w-100"
+             type="button"
+             data-bs-toggle="collapse"
+             data-bs-target="#userCreationCollapse"
+             aria-expanded="false"
+             aria-controls="userCreationCollapse"
+             (click)="toggleUserCreation()">User Creation</button>
+
+      <div *ngIf="userCreationVisible" class="editing-container mt-3" [ngClass]="{'show': userCreationVisible}">
+        <div class="card p-3">
+         <h5 class="card-title">User Creation</h5>
+          <app-admin-usercreate></app-admin-usercreate>
+        </div>
+      </div>
+    </div>
 
     <!-- news edit -->
-    <button class="btn btn-secondary w-100 mt-3"
-           type="button"
-           data-bs-toggle="collapse"
-           data-bs-target="#newsEditingCollapse"
-           aria-expanded="false"
-            aria-controls="newsEditingCollapse"
-           (click)="toggleNewsEditing()">News Editing</button>
+    <div class="other-panel">
+      <button class="btn btn-secondary w-100"
+             type="button"
+             data-bs-toggle="collapse"
+             data-bs-target="#newsEditingCollapse"
+             aria-expanded="false"
+              aria-controls="newsEditingCollapse"
+             (click)="toggleNewsEditing()">News Editing</button>
 
-   <div *ngIf="newsEditingVisible" class="editing-container mt-3" [ngClass]="{'show': newsEditingVisible}">
-     <div class="card p-3">
-       <h5 class="card-title">News Editing</h5>
-       <p>placeholder</p>
+     <div *ngIf="newsEditingVisible" class="editing-container mt-3" [ngClass]="{'show': newsEditingVisible}">
+       <div class="card p-3">
+         <h5 class="card-title">News Editing</h5>
+         <p>placeholder</p>
+        </div>
+     </div>
+    </div>
+
+    <!-- news add -->
+    <div class="last-panel">
+      <button class="btn btn-secondary w-100"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#newsAddCollapse"
+              aria-expanded="false"
+              aria-controls="newsAddCollapse"
+              (click)="toggleNewsAdd()">Add News</button>
+
+      <div *ngIf="newsAddVisible" class="editing-container mt-3" [ngClass]="{'show': newsAddVisible}">
+        <div class="card p-3">
+          <h5 class="card-title">Add News</h5>
+          <app-news-creation></app-news-creation>
+        </div>
       </div>
-   </div>
+    </div>
   </div>
 </div>
 <app-footer></app-footer>

@@ -24,12 +24,71 @@
     </div>
   </div>
 
+  <div class="container mt-4">
+    <button class="btn btn-primary bg-gradient-blue w-100"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#submitCollapse"
+            aria-expanded="false"
+            aria-controls="submitCollapse"
+            (click)="toggleSubmit()">Submit your own news</button>
+
+    <div *ngIf="submitVisible" class="calendar-container mt-3" [ngClass]="{'show': submitVisible}">
+      <div class="card p-3">
+        <h5 class="card-title">Add news entry</h5>
+        <app-news-creation></app-news-creation>
+      </div>
+    </div>
+  </div>
+
 
   <div class="row mt-5">
     <h1 class="positioned-title">News</h1>
-    <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let news of newsItems">
-      <app-news-card></app-news-card>
+    <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let listing of listingList">
+      <app-news-card
+        [newsHeading]="listing.title"
+        [imgURL]="listing.image_url"
+        [newsTag]="listing.tag"
+        [newsDate]="listing.creation_date"
+        (click)="openModal(listing)">
+      </app-news-card>
     </div>
+
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="newsModal"
+      tabindex="-1"
+      aria-labelledby="newsModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newsModalLabel">{{ selectedNews?.title }}</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              *ngIf="selectedNews?.image_url"
+              [src]="selectedNews?.image_url"
+              alt="news image"
+              class="img-fluid mb-3"
+            />
+            <p>{{ selectedNews?.description }}</p>
+            <i>Submitted by: &#64;{{ selectedNews?.tag }}</i>
+            <p><small>Published: {{ selectedNews?.creation_date }}</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 <br>
