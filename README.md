@@ -1,21 +1,56 @@
-# ProjectChallenge2
+# MNN Angular User-operated News Website
 
-This project is currently being developed for Web programming class at IPI Akademija Tuzla. This project is not finalized yet and may contain mistakes or errors.
+Angular website with PHP microservice backend connecting to a local MySQL database running via XAMPP. Setup files are included.
 
-## Functionality
+## Functions
+* Users can register and post news entries
+* News entries can be filtered using a calendar component
+* Clicking on news previews opens up a modal with all content
+* Editable user profiles
+* Guests have a site preview
+* Admin dashboard with abilities to read, create, update and delete users and news entries
 
-Frontend is set up:
-- Navbar with animations and an animated hamburger menu
-- Footer
-- Login page (start route)
-- Registration page (accessible from login page, data is stored in variables, email regex, password validation)
-- Home page (accessible via /home route, placeholder data)
-- Profile page (accessible via the navbar icon)
-- About page (accessible via the menu)
-- Contact page (accessible via the menu)
-- Admin page (accessible by logging in as admin - email: admin, pass: admin, placeholder menus)
+## Features
+* Modern UI made with UX in mind
+* BCrypt password hashing
+* Important local variables encrypted
+* Responsive design
+* Access management by account role
 
-## In development
+## Screenshots
 
-- Backend
-- Administrator functionality
+![Landing page](https://i.imgur.com/bKTTQr1.png)
+*Landing page (only visible to visitors who are not logged in)*
+
+![Login screen](https://i.imgur.com/Gmj5e0G.png)
+*Login screen*
+
+![Home page](https://i.imgur.com/aUTOkpc.png)
+*Home page with news listings*
+
+![Expanded news](https://i.imgur.com/uDh45jG.png)
+*Expanded news card*
+
+![Calendar](https://i.imgur.com/jNgx7uY.png)
+*Calendar / Add News components in collapsing menus*
+
+![Account settings](https://i.imgur.com/HyjzJfT.png)
+*User account settings*
+
+![Admin panel](https://i.imgur.com/geacSjz.png)
+*Admin panel*
+
+![Admin panel users](https://i.imgur.com/86YNp6q.png)
+*Admin panel with user editing and user creation expanded*
+
+![Admin panel news](https://i.imgur.com/cz5GSTx.png)
+*Admin panel with news management panel expanded*
+
+![404 page](https://i.imgur.com/0FI2D6E.png)
+*Stylized, animated 404 page. Button leads to each role's corresponding home page*
+
+Made as a final project for the Web programming class at IPI Akademija Tuzla
+
+All rights reserved
+
+Mateo Marjanovic
