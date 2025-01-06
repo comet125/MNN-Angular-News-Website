@@ -52,13 +52,15 @@ export class HomePageComponent implements OnInit {
   fetchNews(): void {
     this.newsService.getNews().subscribe({
       next: (newsItems) => {
-        this.listingList = newsItems.map(item => new Listing(
-          item.title,
-          item.image_url,
-          item.description,
-          item.tag,
-          item.creation_date
-        ));
+        this.listingList = newsItems
+          .sort((a, b) => new Date(b.creation_date).getTime() - new Date(a.creation_date).getTime()) // Sort newest to oldest
+          .map(item => new Listing(
+            item.title,
+            item.image_url,
+            item.description,
+            item.tag,
+            item.creation_date
+          ));
       },
       error: (error) => {
         console.error('Error fetching news:', error);
@@ -66,6 +68,7 @@ export class HomePageComponent implements OnInit {
       }
     });
   }
+
 
   openModal(listing: Listing): void {
     if (isPlatformBrowser(this.platformId)) {

@@ -34,6 +34,11 @@ export class NewsCreationComponent {
       return;
     }
 
+    // Check if the image URL is empty, if so, set the placeholder URL
+    if (!this.imageUrl) {
+      this.imageUrl = 'https://placehold.co/800x600/6a11cb/FFF?text=Breaking+news';
+    }
+
     const newsData = {
       title: this.title,
       image_url: this.imageUrl,
@@ -60,3 +65,4 @@ export class NewsCreationComponent {
     });
   }
 }
+

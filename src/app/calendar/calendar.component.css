@@ -1,39 +1,125 @@
-/* Calendar Grid Styling */
+/* Container styling */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Calendar Header */
+.d-flex h4 {
+  color: #6a11cb;
+  font-weight: bold;
+}
+
+.btn {
+  background-color: #6a11cb;
+  color: #FFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #b892ff;
+  transform: scale(1.05);
+}
+
+.form-select {
+  background-color: #FFF;
+  border: 2px solid #6a11cb;
+  border-radius: 8px;
+  color: #6a11cb;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  width: 90px;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #b892ff;
+  box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
+}
+
+/* Calendar Grid */
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 5px;
+  gap: 10px;
+  background-color: #FFF;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .day-header {
   font-weight: bold;
   text-align: center;
-  background-color: #f8f8f8;
-  padding: 10px;
-  border: 1px solid #ddd;
+  color: #6a11cb;
+  border-bottom: 2px solid #b892ff;
+  padding: 0.5rem 0;
 }
 
 .day-cell {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-align: center;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
+  padding: 0.8rem 0;
+  border-radius: 8px;
+  color: #6a11cb;
+  font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  background-color: #f9f9f9;
 }
 
 .day-cell:hover {
-  background-color: #f1f1f1;
+  background-color: #6a11cb;
+  color: #FFF;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px rgba(106, 17, 203, 0.3);
 }
 
 .day-cell.has-news {
-  background-color: #007bff;
-  color: white;
+  background-color: #eae6ff;
+  border: 2px solid #b892ff;
 }
 
 .day-cell.has-news:hover {
-  background-color: #0056b3;
+  background-color: #6a11cb;
+  color: #FFF;
+}
+
+/* Selected Date */
+.day-cell.selected {
+  background-color: #6a11cb;
+  color: #FFF;
+  font-weight: bold;
+  border: 2px solid #b892ff;
+}
+
+/* Responsive Card */
+.card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.card-title {
+  color: #6a11cb;
+  font-weight: bold;
+}
+
+.card-text {
+  color: #333;
+}
+
+.text-muted {
+  font-size: 0.8rem;
+  color: #6a11cb;
 }

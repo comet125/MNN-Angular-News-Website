@@ -18,7 +18,7 @@ export class LoginPageComponent {
   email: string = '';
   password: string = '';
 
-  private secretKey: string = 'sranje123'; // This should be a strong key
+  private secretKey: string = 'sranje123';
 
   constructor(private router: Router, private http: HttpClient) {
     this.checkUserLoggedIn();
