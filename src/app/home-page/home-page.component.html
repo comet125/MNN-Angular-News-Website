@@ -31,11 +31,47 @@
       <app-news-card
         [newsHeading]="listing.title"
         [imgURL]="listing.image_url"
-        [newsDesc]="listing.description"
         [newsTag]="listing.tag"
-        [newsDate]="listing.creation_date">
+        [newsDate]="listing.creation_date"
+        (click)="openModal(listing)">
       </app-news-card>
     </div>
+
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="newsModal"
+      tabindex="-1"
+      aria-labelledby="newsModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newsModalLabel">{{ selectedNews?.title }}</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              *ngIf="selectedNews?.image_url"
+              [src]="selectedNews?.image_url"
+              alt="news image"
+              class="img-fluid mb-3"
+            />
+            <p>{{ selectedNews?.description }}</p>
+            <i>Submitted by: &#64;{{ selectedNews?.tag }}</i>
+            <p><small>Published: {{ selectedNews?.creation_date }}</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 <br>

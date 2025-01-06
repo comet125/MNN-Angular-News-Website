@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-news-card',
@@ -13,4 +13,9 @@ export class NewsCardComponent {
   @Input() newsDesc!: string;
   @Input() newsTag!: string;
   @Input() newsDate!: string;
+  @Output() cardClick = new EventEmitter<void>();
+
+  onCardClick(): void {
+    this.cardClick.emit();
+  }
 }
