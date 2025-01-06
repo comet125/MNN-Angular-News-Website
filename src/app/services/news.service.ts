@@ -14,4 +14,8 @@ export class NewsService {
   getNews(): Observable<Listing[]> {
     return this.http.get<Listing[]>(this.apiUrl);
   }
+
+  getNewsByDate(date: string) {
+    return this.http.get<any[]>(`http://localhost/database/get-news-dates.php?date=${date}`);
+  }
 }

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForOf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {NewsService} from '../services/news.service';
 
 @Component({
   selector: 'app-calendar',
@@ -12,6 +13,10 @@ import {FormsModule} from '@angular/forms';
   styleUrl: './calendar.component.css'
 })
 export class CalendarComponent implements OnInit {
+  newsData: any[] = [];
+
+  constructor(private newsService: NewsService) {}
+
   months = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
@@ -75,7 +80,10 @@ export class CalendarComponent implements OnInit {
   selectDate(date: string) {
     if (date) {
       console.log(`Selected date: ${date}`);
-      // Placeholder for filtering news by the selected date
+      this.newsService.getNewsByDate(date).subscribe((news) => {
+        this.newsData = news;
+        console.log('Filtered News:', this.newsData);
+      });
     }
   }
 }
