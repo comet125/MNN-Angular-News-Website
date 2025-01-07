@@ -17,6 +17,8 @@ Angular website with PHP microservice backend connecting to a local MySQL databa
 * 📱 Responsive design
 * 👥 Access management by account role
 
+Hosted link: https://mnnewsnetwork.netlify.app (No backend yet, limited functionality)
+
 ## Screenshots
 
 ![Landing page](https://i.imgur.com/bKTTQr1.png)

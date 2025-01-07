@@ -64,7 +64,7 @@ export class LoginPageComponent {
             this.router.navigate(['/admin-dash']);
           } else {
             localStorage.setItem('role', 'user');
-            const encryptedUsername = this.encrypt(response.username); // Encrypt username before storing
+            const encryptedUsername = this.encrypt(response.username);
             localStorage.setItem('username', encryptedUsername);
             localStorage.setItem('first_name', response.firstName);
             localStorage.setItem('surname', response.surname);

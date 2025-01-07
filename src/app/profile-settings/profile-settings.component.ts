@@ -32,9 +32,9 @@ export class ProfileSettingsComponent implements OnInit {
   constructor(private router: Router, private http: HttpClient) {}
 
   logout(): void {
+    localStorage.removeItem('username');
     localStorage.removeItem('first_name');
     localStorage.removeItem('surname');
-    localStorage.removeItem('username');
     localStorage.removeItem('role');
     this.router.navigate(['/login']);
   }

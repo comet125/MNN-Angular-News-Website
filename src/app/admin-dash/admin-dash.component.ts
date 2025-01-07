@@ -46,9 +46,9 @@ export class AdminDashComponent {
   }
 
   logout() {
+    localStorage.removeItem('username');
     localStorage.removeItem('first_name');
     localStorage.removeItem('surname');
-    localStorage.removeItem('username');
     localStorage.removeItem('role');
     this.router.navigate(['/login']);
   }
