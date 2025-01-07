@@ -1,0 +1,8 @@
+XAMPP needs to be set up with a database called newsdb. 
+Following the database creation, the queries should be run one by one.
+
+The PHP files should be placed in the following directory:
+
+/Applications/XAMPP/xamppfiles/htdocs/database
+
+(or Windows/Linux equivalent)
