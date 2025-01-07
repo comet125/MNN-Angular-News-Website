@@ -11,8 +11,8 @@ import {NgForOf} from '@angular/common';
   styleUrls: ['./admin-userpanel.component.css']
 })
 export class AdminUserPanelComponent implements OnInit {
-  users: any[] = []; // Users fetched from the backend
-  apiUrl = 'http://localhost/database/admin.php'; // Update with your backend endpoint
+  users: any[] = [];
+  apiUrl = 'http://localhost/database/admin.php';
 
   constructor(private http: HttpClient) {}
 
@@ -24,12 +24,11 @@ export class AdminUserPanelComponent implements OnInit {
   fetchUsers() {
     this.http.get<any[]>(this.apiUrl).subscribe({
       next: (response) => {
-        // Map backend fields to frontend-friendly names
         this.users = response.map(user => ({
           id: user.id,
           email: user.email,
           username: user.username,
-          firstName: user.first_name,  // Map first_name to firstName
+          firstName: user.first_name,
           surname: user.surname
         }));
       },
@@ -41,7 +40,6 @@ export class AdminUserPanelComponent implements OnInit {
   }
 
 
-  // Edit a specific field for a user
   editField(user: any, field: string) {
     const fieldMapping: { [key: string]: string } = {
       firstName: 'first_name',
@@ -80,7 +78,6 @@ export class AdminUserPanelComponent implements OnInit {
       this.http.delete(this.apiUrl, { body: { id: userId } }).subscribe({
         next: (response: any) => {
           if (response.status === 'success') {
-            // Remove the user from the local array (frontend)
             this.users = this.users.filter(user => user.id !== userId);
             alert('User deleted successfully!');
           } else {

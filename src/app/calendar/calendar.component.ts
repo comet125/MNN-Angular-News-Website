@@ -49,12 +49,10 @@ export class CalendarComponent implements OnInit {
     const firstDay = new Date(this.selectedYear, this.selectedMonth, 1).getDay();
     const daysInMonth = new Date(this.selectedYear, this.selectedMonth + 1, 0).getDate();
 
-    // Add padding for days of the week before the 1st
     for (let i = 0; i < firstDay; i++) {
       this.dates.push({ day: 0, fullDate: '' });
     }
 
-    // Add actual days of the month
     for (let i = 1; i <= daysInMonth; i++) {
       const fullDate = `${this.selectedYear}-${String(this.selectedMonth + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
       this.dates.push({ day: i, fullDate });
@@ -83,28 +81,27 @@ export class CalendarComponent implements OnInit {
 
   selectDate(date: string) {
     if (date) {
-      console.log(`Selected date: ${date}`);
+      // console.log(`Selected date: ${date}`);
       this.newsService.getNewsByDate(date).subscribe((news) => {
-        this.newsData = news; // Store the fetched news in the newsData array
-        console.log('Filtered News:', this.newsData);
+        this.newsData = news;
+        // console.log('Filtered News:', this.newsData);
       }, error => {
-        console.error('Error fetching news:', error);
+        // console.error('Error fetching news:', error);
       });
     }
   }
 
   fetchNewsDates() {
-    // Call the PHP backend to fetch distinct news dates
     this.http.get<{ status: string, data: string[] }>('http://localhost/database/get-news.php')
       .subscribe(response => {
         if (response.status === 'success') {
-          this.newsDates = response.data; // Populate the newsDates array
-          console.log('Fetched news dates:', this.newsDates);
+          this.newsDates = response.data;
+          // console.log('Fetched news dates:', this.newsDates);
         } else {
-          console.error('Failed to fetch news dates');
+          // console.error('Failed to fetch news dates');
         }
       }, error => {
-        console.error('Error fetching news dates:', error);
+        // console.error('Error fetching news dates:', error);
       });
   }
 }

@@ -46,18 +46,18 @@ export class AdminUsercreateComponent {
       password: this.userData.password
     };
 
-    console.log(formData);
+    // console.log(formData);
 
     const url = 'http://localhost/database/register.php';
 
     this.http.post(url, formData).subscribe({
       next: (response: any) => {
-        console.log('Uspjeh:', response);
+        // console.log('Uspjeh:', response);
         alert("Account created successfully.");
       },
       error: (error) => {
-        console.log(formData);
-        console.error('Error:', error);
+        // console.log(formData);
+        // console.error('Error:', error);
       }
     });
 

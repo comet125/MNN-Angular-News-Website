@@ -11,11 +11,13 @@ Angular website with PHP microservice backend connecting to a local MySQL databa
 * Admin dashboard with abilities to read, create, update and delete users and news entries
 
 ## Features
-* Modern UI made with UX in mind
-* BCrypt password hashing
-* Important local variables encrypted
-* Responsive design
-* Access management by account role
+* 🎨 Modern UI made with UX in mind 
+* 🛡️ BCrypt password hashing
+* 🔐 Important local variables encrypted
+* 📱 Responsive design
+* 👥 Access management by account role
+
+Hosted link: https://mnnewsnetwork.netlify.app (No backend yet, limited functionality)
 
 ## Screenshots
 
@@ -40,14 +42,18 @@ Angular website with PHP microservice backend connecting to a local MySQL databa
 ![Admin panel](https://i.imgur.com/geacSjz.png)
 *Admin panel*
 
-![Admin panel users](https://i.imgur.com/86YNp6q.png)
-*Admin panel with user editing and user creation expanded*
+![Admin panel news](https://i.imgur.com/86YNp6q.png)
+*Admin panel with news editing panel expanded*
 
-![Admin panel news](https://i.imgur.com/cz5GSTx.png)
-*Admin panel with news management panel expanded*
+![Admin user edit panel](https://i.imgur.com/0FI2D6E.png)
+*Admin user edit panel with user creation panel expanded*
 
-![404 page](https://i.imgur.com/0FI2D6E.png)
+![About page](https://i.imgur.com/n5FWrnE.png)
+*About page with drop down navbar menu*
+
+![404 page](https://i.imgur.com/cz5GSTx.png)
 *Stylized, animated 404 page. Button leads to each role's corresponding home page*
+
 
 Made as a final project for the Web programming class at IPI Akademija Tuzla
 

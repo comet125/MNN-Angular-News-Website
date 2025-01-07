@@ -14,17 +14,17 @@ export class AuthGuard implements CanActivate {
       expectedRole = 'user';
     }
 
-    console.log('expected role je ', expectedRole);
+    // console.log('expected role je ', expectedRole);
 
     const userRole = localStorage.getItem('role'); // Trenutna rola korisnika
 
-    console.log(`Pokušaj pristupa: očekivana rola - ${expectedRole}, trenutna rola - ${userRole}`);
+    // console.log(`Pokušaj pristupa: očekivana rola - ${expectedRole}, trenutna rola - ${userRole}`);
 
     if (userRole === expectedRole) {
-      console.log(`Pristup dozvoljen za ${userRole}`);
+      // console.log(`Pristup dozvoljen za ${userRole}`);
       return true;
     } else {
-      console.warn(`Pristup odbijen za ${userRole}`);
+      // console.warn(`Pristup odbijen za ${userRole}`);
       alert('You do not have access to view this page. Please log in as a user!');
       this.router.navigate(['/login']);
       return false;

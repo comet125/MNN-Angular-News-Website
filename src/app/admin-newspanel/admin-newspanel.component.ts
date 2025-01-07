@@ -11,20 +11,19 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './admin-newspanel.component.css'
 })
 export class AdminNewspanelComponent {
-  news: any[] = []; // Array to hold the news data
-  apiUrl = 'http://localhost/database'; // Adjust your API URL accordingly
+  news: any[] = [];
+  apiUrl = 'http://localhost/database';
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.fetchNews(); // Fetch the news when the component initializes
+    this.fetchNews();
   }
 
-  // Fetch all news listings
   fetchNews(): void {
     this.http.get(`${this.apiUrl}/admin-getnews.php`).subscribe(
       (response: any) => {
-        this.news = response.data; // Assuming the PHP returns a "data" field with the news
+        this.news = response.data;
       },
       (error) => {
         console.error('Error fetching news:', error);
@@ -32,7 +31,6 @@ export class AdminNewspanelComponent {
     );
   }
 
-  // Edit a specific field for a news item
   editField(newsItem: any, field: string): void {
     const newValue = prompt(`Enter new value for ${field}:`, newsItem[field]);
     if (newValue !== null && newValue.trim() !== '') {
@@ -40,14 +38,14 @@ export class AdminNewspanelComponent {
         id: newsItem.id,
         field,
         value: newValue,
-        updateTag: true, // Send a flag to update the tag field
+        updateTag: true,
       };
 
       this.http.put(`${this.apiUrl}/update-news.php`, updatedData).subscribe(
         (response: any) => {
           if (response.status === 'success') {
             alert('Field updated successfully!');
-            this.fetchNews(); // Refresh the table after the update
+            this.fetchNews();
           } else {
             alert(`Failed to update field: ${response.message}`);
           }
@@ -59,19 +57,16 @@ export class AdminNewspanelComponent {
     }
   }
 
-
-  // Delete a news item by ID
-// Delete a news item by ID
   deleteUser(newsId: number): void {
     if (confirm('Are you sure you want to delete this news item?')) {
       this.http.delete(`${this.apiUrl}/delete-news.php`, {
         headers: { 'Content-Type': 'application/json' },
-        body: { id: newsId }, // Send the ID in the body
+        body: { id: newsId },
       }).subscribe(
         (response: any) => {
           if (response.status === 'success') {
             alert('News item deleted successfully!');
-            this.fetchNews(); // Refresh the table after deletion
+            this.fetchNews();
           } else {
             alert(`Failed to delete news: ${response.message}`);
           }

@@ -20,11 +20,10 @@ export class NewsCreationComponent {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    // Decrypt the username if it exists in localStorage
     const encryptedUsername = localStorage.getItem('username');
     if (encryptedUsername) {
       const bytes = CryptoJS.AES.decrypt(encryptedUsername, 'sranje123');
-      this.username = bytes.toString(CryptoJS.enc.Utf8); // Decrypted username
+      this.username = bytes.toString(CryptoJS.enc.Utf8);
     }
   }
 
@@ -34,7 +33,6 @@ export class NewsCreationComponent {
       return;
     }
 
-    // Check if the image URL is empty, if so, set the placeholder URL
     if (!this.imageUrl) {
       this.imageUrl = 'https://placehold.co/800x600/6a11cb/FFF?text=Breaking+news';
     }
@@ -43,14 +41,13 @@ export class NewsCreationComponent {
       title: this.title,
       image_url: this.imageUrl,
       description: this.description,
-      tag: this.username // Using the decrypted username as the tag
+      tag: this.username
     };
 
     this.http.post('http://localhost/database/add-news.php', newsData).subscribe({
       next: (response: any) => {
         if (response.status === 'success') {
           alert('News added successfully!');
-          // Optionally, clear the form
           this.title = '';
           this.imageUrl = '';
           this.description = '';
@@ -59,7 +56,7 @@ export class NewsCreationComponent {
         }
       },
       error: (error) => {
-        console.error('Error adding news:', error);
+        // console.error('Error adding news:', error);
         alert('An error occurred while adding the news. Make sure the URL provided is valid.');
       }
     });
