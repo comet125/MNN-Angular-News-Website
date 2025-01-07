@@ -1,4 +1,3 @@
-/* Full-page gradient background */
 .gradient-left {
   background: linear-gradient(135deg, #6a11cb, #2575fc);
   color: white;
@@ -9,16 +8,13 @@
 }
 
 
-
-/* Gradient Background with Animation */
 .gradient-left {
   background: linear-gradient(135deg, #6a11cb, #2575fc);
-  background-size: 400% 400%; /* Larger size to allow smooth transitions */
-  animation: gradientShift 8s ease infinite; /* Infinite animation */
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
   color: white;
 }
 
-/* Keyframes for Gradient Animation */
 @keyframes gradientShift {
   0% {
     background-position: 0 50%;
@@ -31,7 +27,7 @@
   }
 }
 
-/* Glow effect for the animated text */
+
 .animated-text {
   font-family: 'Monoton', cursive;
   font-size: 6rem;
@@ -40,7 +36,7 @@
   animation: glow 1.5s infinite alternate, fadeIn 2s ease-out;
 }
 
-/* Glow Animation */
+
 @keyframes glow {
   from {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px #ff00ff, 0 0 30px #ff00ff;
@@ -50,7 +46,6 @@
   }
 }
 
-/* Fade-in Animation for the Text */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -61,7 +56,6 @@
 }
 
 
-/* Login Box */
 .login-box {
   width: 100%;
   max-width: 400px;
@@ -69,7 +63,7 @@
   background: white;
 }
 
-/* Form elements */
+
 label {
   font-weight: bold;
 }

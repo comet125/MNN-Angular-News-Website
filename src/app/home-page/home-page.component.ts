@@ -36,12 +36,12 @@ export class HomePageComponent implements OnInit {
     this.fetchNews();
   }
 
-  // Decrypt the username stored in localStorage
+
   decryptUsername(): void {
     const encryptedUsername = localStorage.getItem('username');
     if (encryptedUsername) {
-      const bytes = CryptoJS.AES.decrypt(encryptedUsername, 'sranje123'); // Decrypt using the same secret key
-      this.userName = bytes.toString(CryptoJS.enc.Utf8); // Get the decrypted string
+      const bytes = CryptoJS.AES.decrypt(encryptedUsername, 'sranje123');
+      this.userName = bytes.toString(CryptoJS.enc.Utf8);
     }
   }
 
@@ -53,7 +53,7 @@ export class HomePageComponent implements OnInit {
     this.newsService.getNews().subscribe({
       next: (newsItems) => {
         this.listingList = newsItems
-          .sort((a, b) => new Date(b.creation_date).getTime() - new Date(a.creation_date).getTime()) // Sort newest to oldest
+          .sort((a, b) => new Date(b.creation_date).getTime() - new Date(a.creation_date).getTime())
           .map(item => new Listing(
             item.title,
             item.image_url,
@@ -63,7 +63,7 @@ export class HomePageComponent implements OnInit {
           ));
       },
       error: (error) => {
-        console.error('Error fetching news:', error);
+        // console.error('Error fetching news:', error);
         alert('Failed to load news items.');
       }
     });
@@ -72,7 +72,7 @@ export class HomePageComponent implements OnInit {
 
   openModal(listing: Listing): void {
     if (isPlatformBrowser(this.platformId)) {
-      this.selectedNews = listing; // Set the selected news item
+      this.selectedNews = listing;
       const modalElement = document.getElementById('newsModal') as HTMLElement;
 
       if (modalElement) {

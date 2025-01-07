@@ -21,11 +21,9 @@ export class GuestComponent implements OnInit {
   selectedNews: Listing | null = null;
 
   constructor(private newsService: NewsService, @Inject(PLATFORM_ID) private platformId: Object, private router: Router) {
-    // Check if 'role' exists in localStorage
     const role = localStorage.getItem('role');
 
     if (role) {
-      // If a role is found, navigate to /home
       this.router.navigate(['/home']);
     }
   }
@@ -58,7 +56,7 @@ export class GuestComponent implements OnInit {
 
   openModal(listing: Listing): void {
     if (isPlatformBrowser(this.platformId)) {
-      this.selectedNews = listing; // Set the selected news item
+      this.selectedNews = listing;
       const modalElement = document.getElementById('newsModal') as HTMLElement;
 
       if (modalElement) {

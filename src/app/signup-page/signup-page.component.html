@@ -3,17 +3,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
 
 <div class="d-flex vh-100">
-  <!-- Left Section -->
   <div class="col-md-6 d-flex align-items-center justify-content-center gradient-left">
     <div class="animated-text">mnn</div>
   </div>
 
-  <!-- Right Section -->
   <div class="col-md-6 d-flex align-items-center justify-content-center gradient-right">
     <div class="card shadow-lg p-4 login-box">
       <h2 class="text-center mb-4">Register</h2>
       <form (ngSubmit)="onSubmit()">
-        <!-- Username -->
         <div class="mb-3">
           <label for="name" class="form-label">Username:</label>
           <input
@@ -27,7 +24,6 @@
           />
         </div>
 
-        <!-- First Name -->
         <div class="mb-3">
           <label for="first-name" class="form-label">First Name:</label>
           <input
@@ -41,7 +37,6 @@
           />
         </div>
 
-        <!-- Surname -->
         <div class="mb-3">
           <label for="surname" class="form-label">Surname:</label>
           <input
@@ -55,7 +50,6 @@
           />
         </div>
 
-        <!-- Email -->
         <div class="mb-3">
           <label for="email" class="form-label">Email:</label>
           <input
@@ -69,7 +63,6 @@
           />
         </div>
 
-        <!-- Password -->
         <div class="mb-3">
           <label for="password" class="form-label">Password:</label>
           <input
@@ -83,7 +76,6 @@
           />
         </div>
 
-        <!-- Confirm Password -->
         <div class="mb-3">
           <label for="confirm-password" class="form-label">Confirm Password:</label>
           <input
@@ -97,12 +89,10 @@
           />
         </div>
 
-        <!-- Register Button -->
         <div class="d-grid">
           <button type="submit" class="btn btn-primary">Register</button>
         </div>
 
-        <!-- Additional Info -->
         <div class="text-center mt-3">
           <p>Already have an account? <a routerLink="/login" class="link-primary">Login here</a></p>
         </div>

@@ -40,14 +40,12 @@ export class ProfileSettingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Decrypt the username if it exists in localStorage
     const encryptedUsername = localStorage.getItem('username');
     if (encryptedUsername) {
       const bytes = CryptoJS.AES.decrypt(encryptedUsername, 'sranje123');
-      this.username = bytes.toString(CryptoJS.enc.Utf8); // Decrypted username
+      this.username = bytes.toString(CryptoJS.enc.Utf8);
     }
 
-    // Retrieve first name and surname as usual (no decryption)
     this.permanentFirstName = localStorage.getItem('first_name');
     this.permanentSurname = localStorage.getItem('surname');
 
@@ -60,12 +58,10 @@ export class ProfileSettingsComponent implements OnInit {
   }
 
 
-  // Check if new passwords match
   formValid(): boolean {
     return this.newPassword === this.confirmPassword;
   }
 
-  // Handle form submission
   onSubmit(): void {
     if (!this.formValid()) {
       alert('New passwords do not match. Please try again.');
@@ -97,7 +93,7 @@ export class ProfileSettingsComponent implements OnInit {
       },
       error => {
         alert('An error occurred while updating the profile. Please check if the old password is correct.');
-        console.error(error);
+        // console.error(error);
       }
     );
   }

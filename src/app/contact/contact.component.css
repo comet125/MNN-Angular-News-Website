@@ -1,15 +1,13 @@
-/* Container to make sections split equally */
 .contact-left, .contact-right {
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
   display: flex;
-  align-items: center; /* Center content vertically */
-  justify-content: center; /* Center content horizontally */
+  align-items: center;
+  justify-content: center;
   padding: 20px;
 }
 
-/* Left side content (text) styling */
 .contact-left {
-  background-color: #f8f8f8; /* Light background color */
+  background-color: #f8f8f8;
   color: #333;
 }
 
@@ -31,7 +29,6 @@
   margin-bottom: 10px;
 }
 
-/* Right side content (image) styling */
 .contact-right {
   background-color: #eeeeee;
   background-size: cover;
@@ -39,7 +36,7 @@
 }
 
 .contact-right img {
-  object-fit: cover; /* Make sure the image covers the area without distortion */
+  object-fit: cover;
 }
 
 .contact-wrapping {

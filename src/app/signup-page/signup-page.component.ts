@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-//import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-signup-page',
@@ -48,20 +47,20 @@ export class SignupPageComponent {
       password: this.userData.password
     };
 
-    console.log(formData);
+    // console.log(formData);
 
     const url = 'http://localhost/database/register.php';
 
     this.http.post(url, formData).subscribe({
       next: (response: any) => {
-        console.log('Uspjeh:', response);
+        // console.log('Uspjeh:', response);
         alert("Account created successfully! Redirecting to the login page");
         this.router.navigate(['/login']);
       },
       error: (error) => {
         alert("Account creation was not successful - The email or username already exists! ");
-        console.log(formData);
-        console.error('Greška:', error);
+        // console.log(formData);
+        // console.error('Greška:', error);
       }
     });
 
