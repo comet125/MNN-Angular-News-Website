@@ -49,7 +49,7 @@ export class SignupPageComponent {
 
     // console.log(formData);
 
-    const url = 'http://localhost/database/register.php';
+    const url = 'http://mnnetworkipia.42web.io/database/register.php';
 
     this.http.post(url, formData).subscribe({
       next: (response: any) => {
