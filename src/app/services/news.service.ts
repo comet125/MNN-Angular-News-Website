@@ -7,7 +7,7 @@ import { Listing } from '../models/Listing';
   providedIn: 'root'
 })
 export class NewsService {
-  private apiUrl = 'http://localhost/database/fetch-news.php';
+  private apiUrl = 'http://mnnetworkipia.42web.io/database/fetch-news.php';
 
   constructor(private http: HttpClient) { }
 
@@ -16,6 +16,6 @@ export class NewsService {
   }
 
   getNewsByDate(date: string) {
-    return this.http.get<any[]>(`http://localhost/database/get-news-dates.php?date=${date}`);
+    return this.http.get<any[]>(`http://mnnetworkipia.42web.io/database/get-news-dates.php?date=${date}`);
   }
 }
