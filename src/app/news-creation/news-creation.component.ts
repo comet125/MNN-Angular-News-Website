@@ -44,7 +44,7 @@ export class NewsCreationComponent {
       tag: this.username
     };
 
-    this.http.post('http://localhost/database/add-news.php', newsData).subscribe({
+    this.http.post('https://mnnetworkipia.42web.io/database/add-news.php', newsData).subscribe({
       next: (response: any) => {
         if (response.status === 'success') {
           alert('News added successfully!');

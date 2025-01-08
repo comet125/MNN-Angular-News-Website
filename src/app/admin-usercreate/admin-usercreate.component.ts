@@ -48,7 +48,7 @@ export class AdminUsercreateComponent {
 
     // console.log(formData);
 
-    const url = 'http://localhost/database/register.php';
+    const url = 'https://mnnetworkipia.42web.io/database/register.php';
 
     this.http.post(url, formData).subscribe({
       next: (response: any) => {

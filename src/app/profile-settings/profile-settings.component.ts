@@ -81,7 +81,7 @@ export class ProfileSettingsComponent implements OnInit {
       newPassword: this.newPassword,
     };
 
-    this.http.post<any>('http://localhost/database/editprofile.php', updatedProfile).subscribe(
+    this.http.post<any>('https://mnnetworkipia.42web.io/database/editprofile.php', updatedProfile).subscribe(
       response => {
         if (response.status === 'success') {
           alert('Profile updated successfully.');

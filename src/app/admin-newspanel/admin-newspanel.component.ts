@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AdminNewspanelComponent {
   news: any[] = [];
-  apiUrl = 'http://localhost/database';
+  apiUrl = 'https://mnnetworkipia.42web.io/database/';
 
   constructor(private http: HttpClient) {}
 

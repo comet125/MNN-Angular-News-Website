@@ -46,7 +46,7 @@ export class LoginPageComponent {
   }
 
   onSubmit() {
-    const url = 'http://localhost/database/login.php';
+    const url = 'https://mnnetworkipia.42web.io/database/login.php';
     const formData = { email: this.email, password: this.password };
 
     this.http.post(url, formData, {

@@ -12,7 +12,7 @@ import {NgForOf} from '@angular/common';
 })
 export class AdminUserPanelComponent implements OnInit {
   users: any[] = [];
-  apiUrl = 'http://localhost/database/admin.php';
+  apiUrl = 'https://mnnetworkipia.42web.io/database/admin.php';
 
   constructor(private http: HttpClient) {}
 

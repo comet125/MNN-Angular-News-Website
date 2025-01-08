@@ -92,7 +92,7 @@ export class CalendarComponent implements OnInit {
   }
 
   fetchNewsDates() {
-    this.http.get<{ status: string, data: string[] }>('http://localhost/database/get-news.php')
+    this.http.get<{ status: string, data: string[] }>('https://mnnetworkipia.42web.io/database/get-news.php')
       .subscribe(response => {
         if (response.status === 'success') {
           this.newsDates = response.data;
